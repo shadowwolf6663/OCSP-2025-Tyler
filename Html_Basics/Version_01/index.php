@@ -34,6 +34,7 @@ echo "<tr>";
 echo "</tr>";
 echo "</table>";
 echo "<img src='images\image.jfif'>";
+echo "<br>";
 echo "<a href='page2.php'>Go to page 2</a>";
 echo "<ul>";
     echo "<li>list item 1</li>";
@@ -47,6 +48,7 @@ echo "<ol>";
 echo "</ol>";
 echo "<p id='today'>bobby</p>";
 echo "<p>bobby</p>";
+echo "<a href='forms.php'>Go to forms</a>";
 echo "</body>";
 
 echo "</html>";
