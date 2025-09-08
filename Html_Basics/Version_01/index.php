@@ -6,12 +6,13 @@ echo "<html>";  // opening html
 echo "<head>";  // opening head
 
 echo "<title>tyler</title>";  // creating title
+echo "<link rel='stylesheet' type='text/css' href='css\styles.css'>";
 
 echo "</head>";
 echo "<body>"; // opening body
 
-echo "<h1>Hello World!</h1>";  // creating header
-echo "<p>Hello</p>";  // creating paragraph
+echo "<h1>main - ken kaneki</h1>";  // creating header
+echo "<p>ken!!</p>";  // creating paragraph
 echo "<hr>";
 echo "<p>Hello</p>";  // creating paragraph
 echo "<br>";
@@ -32,8 +33,20 @@ echo "<tr>";
     echo "<th>Hello6</th>";
 echo "</tr>";
 echo "</table>";
-echo "<img src='image.jfif'>";
+echo "<img src='images\image.jfif'>";
 echo "<a href='page2.php'>Go to page 2</a>";
+echo "<ul>";
+    echo "<li>list item 1</li>";
+    echo "<li>list item 2</li>";
+    echo "<li>list item 3</li>";
+echo "</ul>";
+echo "<ol>";
+    echo "<li>list item 1</li>";
+    echo "<li>list item 2</li>";
+    echo "<li>list item 3</li>";
+echo "</ol>";
+echo "<p id='today'>bobby</p>";
+echo "<p>bobby</p>";
 echo "</body>";
 
 echo "</html>";
