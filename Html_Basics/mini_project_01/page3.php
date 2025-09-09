@@ -14,34 +14,41 @@ echo "<body>"; // opening body
 echo "<h1>plot</h1>";  // creating header
 echo "<h2>begining-meeting rize</h2>";
 echo "<img src='images/begining.jfif'>";
-echo "<p>date/surgery</p>";
+echo "<p>he dates a woman known as rize unknowing of her being a ghoul but is saved by touka who drops beams almost killing both kaneki and rize but kaneki survives because of organs fom the ghoul rize which results in him becoming a half ghoul</p>";
 echo "<br>";
+
 echo "<h2>joining Anteiku</h2>";
 echo "<img src='images/joining%20Anteiku.jfif'>";
-echo "<p>living as a ghoul/training</p>";
+echo "<p>recives training on how to live as a ghoul from yoshimura while also being taught how to fight with his kagane by renji he also recieves his iconic 1 eye mask from uta during this time to hide his identity</p>";// details on character
 echo "<br>";
+
 echo "<h2>getting captured by yakumo oomori</h2>";
 echo "<img src='images/captured_by_yakumo.jfif'>";
-echo "<p>kaneki becoming schitzothrenic</p>";
+echo "<p>kaneki becoming schitzothrenic after being tortured by another ghoul know as the 13th wards jason this is also when his hait turns white</p>";// details on character
 echo "<br>";
+
 echo "<h2>kaneki losing memories</h2>";
 echo "<img src='images/losing_memories.jfif'>";
-echo "<p>becomes another version of himself after losing memories and joins the ghoul defence force</p>";
+echo "<p>becomes another version of himself after losing memories and joins the ccg as an opperative where he teaches and manages  a group of younger ghouls while also struggling holding back his past of ken kaneki</p>";// details on character
 echo "<br>";
+
 echo "<h2>meeting touka again and getting married</h2>";
 echo "<img src='images/touka_wedding.jfif'>";
-echo "<p>after getting married crazy woman attacks touka and leaves him no other option but to become a centipede that swallows a large majority of japan</p>";
+echo "<p>after getting married a ccg operative in love with kaneki attacks touka and leaves him no other option but to become a centipede that swallows a large majority of japan</p>";// details on character
 echo "<br>";
+
 echo "<h2>kaneki returns</h2>";
 echo "<img src='images/becomes%20centipede.jfif'>";
-echo "<p>find his main body and remove him from the centiped using a metal detector to locate his ring</p>";
+echo "<p>find his main body and remove him from the centiped using a metal detector to locate his ring he has lost alot of muscle mass and is put into recovery for a large amount of time before he regains his true self ken kaneki and sheds his alter egos and they merge back into one</p>";// details on character
 echo "<br>";
-echo "<h2>gets old</h2>";
+
+echo "<h2>happy ending</h2>";
 echo "<img src='images/end.webp'>";
-echo "<p>jump cuts to kaneki and touka when they are old with there child</p>";
+echo "<p>jump cuts to kaneki and touka when they are old with there child</p>"; // details on character
 echo "<br>";
-echo "<a href='page4.php'>Ken Kaneki</a>"; // linking to a different page
-echo "<br>";
+
+//echo "<a href='page4.php'>Ken Kaneki</a>"; // linking to a different page i decided not to add
+//echo "<br>";
 echo "<a href='page2.php'>Characters</a>"; // linking to a different page
 echo "<br>";
 echo "<a href='index.php'>return to main</a>"; // linking to a different page

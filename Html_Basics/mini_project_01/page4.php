@@ -1,3 +1,5 @@
+#might be added later
+
 <?php //this opens the php code section
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is

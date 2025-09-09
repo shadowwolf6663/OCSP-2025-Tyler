@@ -4,6 +4,7 @@ body {
     background-color: #636363;
     padding-left: 30px;
     padding-right: 30px;
+
 }
 
 h1 {
@@ -11,6 +12,7 @@ h1 {
     border : solid 3px #242424;
     background-color: #AADD34;
     text-align : center;
+
 }
 
 h2 {
@@ -19,12 +21,14 @@ h2 {
     background-color: #AADD34;
     text-align : center;
     width:30%;
+
 }
 
 p {
     color : #DDDDDD;
     font-size:17px;
     background-color: #343434;
+
 }
 
 img {
@@ -34,12 +38,32 @@ img {
 
 }
 
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    box-sizing: border-box;
+
+}
+
+#checkbox {
+    width : 10%;
+    padding: 12px;
+    margin: 10px 0;
+    box-sizing: border-box;
+
+}
+
 a {
     color:#AADD34;
     font-size:20px;
     text-decoration: none;
+    background-color: #232323;
+
 }
+
 a:hover{
     color:#FF2356;
     font-size:25px;
+
 }
