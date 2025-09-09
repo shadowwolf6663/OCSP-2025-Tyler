@@ -18,12 +18,20 @@ h2 {
     border : solid 3px #242424;
     background-color: #AADD34;
     text-align : center;
-    width:33%;
+    width:30%;
 }
 
 p {
     color : #DDDDDD;
     font-size:17px;
+    background-color: #343434;
+}
+
+img {
+    border:4px dashed #121212;
+    border-radius: 30px;
+    display: flex;
+
 }
 
 a {

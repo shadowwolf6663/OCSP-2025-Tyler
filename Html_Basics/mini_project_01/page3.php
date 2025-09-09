@@ -13,25 +13,32 @@ echo "<body>"; // opening body
 
 echo "<h1>plot</h1>";  // creating header
 echo "<h2>begining-meeting rize</h2>";
+echo "<img src='images/begining.jfif'>";
 echo "<p>date/surgery</p>";
 echo "<br>";
 echo "<h2>joining Anteiku</h2>";
+echo "<img src='images/joining%20Anteiku.jfif'>";
 echo "<p>living as a ghoul/training</p>";
 echo "<br>";
 echo "<h2>getting captured by yakumo oomori</h2>";
+echo "<img src='images/captured_by_yakumo.jfif'>";
 echo "<p>kaneki becoming schitzothrenic</p>";
 echo "<br>";
 echo "<h2>kaneki losing memories</h2>";
+echo "<img src='images/losing_memories.jfif'>";
 echo "<p>becomes another version of himself after losing memories and joins the ghoul defence force</p>";
 echo "<br>";
 echo "<h2>meeting touka again and getting married</h2>";
+echo "<img src='images/touka_wedding.jfif'>";
 echo "<p>after getting married crazy woman attacks touka and leaves him no other option but to become a centipede that swallows a large majority of japan</p>";
 echo "<br>";
 echo "<h2>kaneki returns</h2>";
+echo "<img src='images/becomes%20centipede.jfif'>";
 echo "<p>find his main body and remove him from the centiped using a metal detector to locate his ring</p>";
 echo "<br>";
 echo "<h2>gets old</h2>";
-echo "<p>jump cuts to kaneki and touka when they are old surrounded by children</p>";
+echo "<img src='images/end.webp'>";
+echo "<p>jump cuts to kaneki and touka when they are old with there child</p>";
 echo "<br>";
 echo "<a href='page4.php'>Ken Kaneki</a>"; // linking to a different page
 echo "<br>";

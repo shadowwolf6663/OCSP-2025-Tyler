@@ -14,6 +14,8 @@ echo "<body>"; // opening body
 echo "<h1>Tokyo Ghoul</h1>";  // creating header
 echo "<p>testing text format</p>";
 echo "<a href='page2.php'>characters</a>"; // linking to a different page
+echo "<br>";
+echo "<a href='form_page.php'>sign up for emails relating to ongoing tokyo ghoul events</a>";
 echo "</body>";
 
 echo "</html>";
