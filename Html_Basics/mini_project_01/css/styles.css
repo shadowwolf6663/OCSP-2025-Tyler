@@ -37,7 +37,8 @@ p {
 img {
     border:4px dashed #121212;/* color of border its thickness and format*/
     border-radius: 30px; /* rounding corner of images*/
-    margin: auto; /* centers the text to centre of page*/
+    display:flex; /* makes it easier to align element */
+    margin: auto; /* centers the image to centre of page*/
 
 }
 
