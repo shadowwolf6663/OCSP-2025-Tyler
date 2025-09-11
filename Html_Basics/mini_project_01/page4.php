@@ -15,7 +15,7 @@ echo "<body>"; // opening body
 
 echo "<h1>Ken Kaneki</h1>";  // creating header
 echo "<a href='page3.php'>Plot</a>"; // linking to a different page
-echo "<br>";
+echo "<br>"; // line break
 echo "<a href='index.php'>return to main</a>"; // linking to a different page
 echo "</body>";
 

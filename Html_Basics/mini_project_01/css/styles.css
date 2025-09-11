@@ -21,6 +21,7 @@ h2 {
     background-color: #AADD34;
     text-align : center;
     width:30%;
+    margin: auto;
 
 }
 
@@ -28,6 +29,8 @@ p {
     color : #DDDDDD;
     font-size:17px;
     background-color: #343434;
+    margin: auto;
+    text-align : center;
 
 }
 
@@ -35,6 +38,7 @@ img {
     border:4px dashed #121212;
     border-radius: 30px;
     display: flex;
+    margin: auto;
 
 }
 
@@ -59,6 +63,8 @@ a {
     font-size:20px;
     text-decoration: none;
     background-color: #232323;
+    text-align : center;
+    margin: auto;
 
 }
 
