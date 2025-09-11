@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: column;
     border: solid 1px red;
 }
@@ -12,6 +13,11 @@
 
 .content {
     border :solid 1px blue;
+}
+
+.topbar {
+    border :solid 1px lime;
+    width:50%;
 }
 
 
@@ -28,7 +34,7 @@ h1 {
     color : #343434;/* color of text */
     border : solid 3px #242424; /* color of border its thickness and format*/
     background-color: #AADD34; /* background color for webpage */
-    text-align : center; /* centers the text*/
+    text-align: center;
 
 }
 
@@ -36,9 +42,8 @@ h2 {
     color : #343434;/* color of text */
     border : solid 3px #242424;/* color of border its thickness and format*/
     background-color: #AADD34; /* background color for webpage */
-    text-align : center;/* centers the text*/
     width:30%; /* how far the header spreads across the page */
-    margin: auto; /* centers the text to centre of page*/
+    margin:auto;
 
 }
 
@@ -46,16 +51,12 @@ p {
     color : #DDDDDD;/* color of text */
     font-size:17px; /* size of text */
     background-color: #343434; /* background color for webpage */
-    margin: auto; /* centers the text to centre of page*/
-    text-align : center;/* centers the text*/
 
 }
 
 img {
     border:4px dashed #121212;/* color of border its thickness and format*/
     border-radius: 30px; /* rounding corner of images*/
-    display:flex; /* makes it easier to align element */
-    margin: auto; /* centers the image to centre of page*/
 
 }
 
@@ -69,14 +70,10 @@ a {
     font-size:20px; /* size of text */
     text-decoration: none; /*  removes underline from hyperlink */
     background-color: #232323; /* background color for webpage */
-    text-align : center; /* centers the text*/
-    margin: auto; /* centers the text to centre of page*/
-    padding: 10px;
 
 }
 
 a:hover{
     color:#FF2356;/* color of text */
-    font-size:25px;/* size of text */
 
 }

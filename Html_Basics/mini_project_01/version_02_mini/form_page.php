@@ -11,10 +11,10 @@ echo "<head>";  // opening head
 echo "</head>";
 
 echo "<body>";
-echo "<h1>signing up for email notifications</h1>";
 
 echo "<div class ='container'>";
     require_once "assets/nav.php";
+    require_once "assets/topbar.php";
 
 echo "<div class ='content'>";
 

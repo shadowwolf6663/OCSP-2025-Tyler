@@ -11,10 +11,9 @@ echo "<link rel='stylesheet' type='text/css' href='css\styles.css'>";
 echo "</head>";
 echo "<body>"; // opening body
 
-echo "<h1>plot</h1>";  // creating header
-
 echo "<div class ='container'>";
     require_once "assets/nav.php";
+    require_once "assets/topbar.php";
 
 echo "<div class ='content'>";
     echo "<h2>begining-meeting rize</h2>"; // sub heading

@@ -13,10 +13,9 @@ echo "<body>"; // opening body
 
 
 
-echo "<h1>characters</h1>";  // creating header
-
 echo "<div class ='container'>";
     require_once "assets/nav.php";
+    require_once "assets/topbar.php";
 
 echo "<div class ='content'>";
 
