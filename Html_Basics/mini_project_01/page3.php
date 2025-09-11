@@ -51,6 +51,7 @@ echo "<br>"; // line break
 //echo "<br>";
 echo "<a href='page2.php'>Characters</a>"; // linking to a different page
 echo "<br>"; // line break
+
 echo "<a href='index.php'>return to main</a>"; // linking to a different page
 echo "</body>";
 
