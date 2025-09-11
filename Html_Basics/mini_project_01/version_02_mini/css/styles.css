@@ -1,3 +1,20 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: solid 1px red;
+}
+
+.nav{
+    border :solid 1px yellow;
+}
+
+.content {
+    border :solid 1px blue;
+}
+
+
 body {
     color : #AAFFAA; /* color of text */
     font-family: Arial, Helvetica, sans-serif;/* selecting font for text */
@@ -54,6 +71,7 @@ a {
     background-color: #232323; /* background color for webpage */
     text-align : center; /* centers the text*/
     margin: auto; /* centers the text to centre of page*/
+    padding: 10px;
 
 }
 

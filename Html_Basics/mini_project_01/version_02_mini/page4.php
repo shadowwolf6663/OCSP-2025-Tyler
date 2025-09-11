@@ -14,9 +14,19 @@ echo "</head>";
 echo "<body>"; // opening body
 
 echo "<h1>Ken Kaneki</h1>";  // creating header
-echo "<a href='page3.php'>Plot</a>"; // linking to a different page
-echo "<br>"; // line break
-echo "<a href='index.php'>return to main</a>"; // linking to a different page
+
+echo "<div class ='container'>";
+    require_once "assets/nav.php";
+
+echo "<div class ='content'>";
+
+
+
+
+echo "</div>";
+
+echo "</div>";
+
 echo "</body>";
 
 echo "</html>";
