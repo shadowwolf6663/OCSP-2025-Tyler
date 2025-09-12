@@ -3,22 +3,16 @@
     justify-content: left;
     text-align: left;
     flex-direction: column;
-    border: solid 1px red;
     font-family:Arial,Helvetica,sans-serif;
     margin-left:30px;
 }
 
-.nav{
-    border :solid 1px yellow;
-}
-
-.content {
-    border :solid 1px blue;
-}
-
-.topbar {
-    border :solid 1px lime;
-    width:50%;
+p {
+    overflow-wrap: break-word;
+    text-align: center;
+    font-size: 20px;
+    background-color: #40DAAE;
+    width:500px;
 }
 
 a {
@@ -61,9 +55,14 @@ h1 {
     font-size: 70px;
     background-color:#842A93;
 
-
 }
 
 #checkbox {
     width:6%;
+}
+
+#logo {
+    position: fixed;
+    top: 50px;
+    right: 300px;
 }
