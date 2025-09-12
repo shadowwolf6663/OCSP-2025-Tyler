@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+    flex-direction: column;
+    border: solid 1px red;
+}
+
+.nav{
+    border :solid 1px yellow;
+}
+
+.content {
+    border :solid 1px blue;
+}
+
+.topbar {
+    border :solid 1px lime;
+    width:50%;
+}
