@@ -21,14 +21,26 @@ p {
 
 }
 
-a {
-    color:#000000;/* color of text */
-    font-size:30px; /* size of text */
-    text-decoration: none; /*  removes underline from hyperlink */
-    background-color: #D9D9D9; /* background color for webpage */
+nav ul {
+    list-style: none;/*removes bullet points*/
+    margin:0;/*removes margin*/
+    padding:0;/*removes padding*/
+    display: flex; /* stops moving vertically*/
+    justify-content: flex-start;/* starts stacking horizontally*/
+    background-color: #D9D9D9;/* adds a background color*/
+
+}
+
+nav li:hover {
+    background-color: #FF2356;/*changes color on hover*/
+
+}
+
+nav li{/* creates space around li items in nav bar */
+    padding:5px 20px 5px 20px;/* top right bottom left padding*/
     font-weight: bold;/*  bold the text */
-    letter-spacing: 3px;/* spacing between letters of text */
-    margin-right:15px;/* spacing between right margin of boxes */
+    font-size:30px; /* size of text */
+    text-decoration: none;/*  removes underline from hyperlink */
 
 }
 
@@ -43,11 +55,6 @@ input {
     width: 30%; /* how far the input spreads across the page */
     padding:10px;/* area around box */
     margin-bottom:20px;/* pixels between other box*/
-
-}
-
-a:hover{
-    color:#FF2356;/* color of text */
 
 }
 

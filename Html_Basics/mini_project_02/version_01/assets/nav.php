@@ -1,10 +1,16 @@
 <?php
-echo "<div class='nav'>";
-echo "<tr>";
-echo "<td><a href='login.php'>login</a></td>";
-echo "<td><a href='book.php'>book</a></td>";
-echo "<td><a href='index.php'>introduction</a></td>";
-echo "<td><a href='bookings.php'>bookings</a></td>";
-echo "</tr>";
+echo "<div class='navi'>";//declares class
+echo "<nav>";
+
+echo "<ul>";//declares unordered list
+
+echo "<li><a href='login.php'>login</a></li>";
+echo "<li><a href='book.php'>book</a></li>";
+echo "<li><a href='index.php'>introduction</a></li>";
+echo "<li><a href='bookings.php'>bookings</a></li>";
+
+echo "</ul>";//closes list
+
+echo "</nav>";
 echo "</div>";
 ?>

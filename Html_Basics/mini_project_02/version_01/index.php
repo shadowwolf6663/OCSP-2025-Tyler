@@ -6,7 +6,7 @@ echo "<html>";  // opening html
     echo "<head>";  // opening head
 
     echo "<title>page 4</title>";  // creating title
-    echo "<link rel='stylesheet' type='text/css' href='css\styles.css'>";// getting style formatting for website from external
+    echo "<link rel='stylesheet' type='text/css' href='css\styles.css'>";// getting css formatting for website from external
 
     echo "</head>";
     echo "<body>"; // opening body
@@ -16,7 +16,7 @@ echo "<html>";  // opening html
             require_once "assets/topbar.php"; // presenting header
             require_once "assets/nav.php";// presenting navigation bar
 
-            echo "<div class ='content'>"; // class context to give all items that give information an overall style to reduce need for styling later and standardise formatting
+            echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
                 echo "<img src='images/pink%20hair%20woman.jpg' id='introduction_image'>";//adding image to screen
                 echo "<p>Welcome to Gibjohn Tutoring!
                 Helping You Learn, Grow, and Succeed—One Step at a Time
