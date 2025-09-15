@@ -1,0 +1,64 @@
+body {
+    color : #AAFFAA; /* color of text */
+    font-family: Arial, Helvetica, sans-serif;/* selecting font for text */
+    background-color: #636363; /* background color for webpage */
+    padding-left: 30px; /* margin on left side */
+    padding-right: 30px; /*  margin on right side*/
+
+}
+
+h1 {
+    color : #343434;/* color of text */
+    border : solid 3px #242424; /* color of border its thickness and format*/
+    background-color: #AADD34; /* background color for webpage */
+    text-align : center; /* centers the text*/
+
+}
+
+h2 {
+    color : #343434;/* color of text */
+    border : solid 3px #242424;/* color of border its thickness and format*/
+    background-color: #AADD34; /* background color for webpage */
+    text-align : center;/* centers the text*/
+    width:30%; /* how far the header spreads across the page */
+    margin: auto; /* centers the text to centre of page*/
+
+}
+
+p {
+    color : #DDDDDD;/* color of text */
+    font-size:17px; /* size of text */
+    background-color: #343434; /* background color for webpage */
+    margin: auto; /* centers the text to centre of page*/
+    text-align : center;/* centers the text*/
+
+}
+
+img {
+    border:4px dashed #121212;/* color of border its thickness and format*/
+    border-radius: 30px; /* rounding corner of images*/
+    display:flex; /* makes it easier to align element */
+    margin: auto; /* centers the image to centre of page*/
+
+}
+
+input {
+    width: 100%; /* how far the input spreads across the page */
+
+}
+
+a {
+    color:#AADD34;/* color of text */
+    font-size:20px; /* size of text */
+    text-decoration: none; /*  removes underline from hyperlink */
+    background-color: #232323; /* background color for webpage */
+    text-align : center; /* centers the text*/
+    margin: auto; /* centers the text to centre of page*/
+
+}
+
+a:hover{
+    color:#FF2356;/* color of text */
+    font-size:25px;/* size of text */
+
+}

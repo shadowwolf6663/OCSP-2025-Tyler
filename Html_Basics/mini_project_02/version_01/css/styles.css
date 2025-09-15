@@ -1,18 +1,24 @@
 .container {
-    display: flex;
-    justify-content: left;
-    text-align: left;
-    flex-direction: column;
-    font-family:Arial,Helvetica,sans-serif;
-    margin-left:30px;
+    display: flex;/* converting elements into boxes */
+    justify-content: left;/* making focus to the left */
+    text-align: left;/* putting text to left side */
+    flex-direction: column;/* makes it go down instead of across*/
+    font-family:Arial,Helvetica,sans-serif;/* default font */
+    margin-left:30px;/* adding space to left so it doesnt rest on side of the screen*/
+
+}
+
+.content {
+    margin-top:20px;
+    color:#232323;/* color of text */
+    font-size:20px; /* size of text */
 }
 
 p {
-    overflow-wrap: break-word;
-    text-align: center;
-    font-size: 20px;
-    background-color: #40DAAE;
-    width:500px;
+    text-align: center;/* centre text */
+    background-color: #40DAAE;/* color of background */
+    width:500px;/* width of box */
+
 }
 
 a {
@@ -20,23 +26,23 @@ a {
     font-size:30px; /* size of text */
     text-decoration: none; /*  removes underline from hyperlink */
     background-color: #D9D9D9; /* background color for webpage */
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin-right:15px;
+    font-weight: bold;/*  bold the text */
+    letter-spacing: 3px;/* spacing between letters of text */
+    margin-right:15px;/* spacing between right margin of boxes */
 
 }
 
 input::placeholder{
-    color:#1A5746;
+    color:#1A5746;/* color of text */
 
 }
 
 input {
-    background-color:#40DAAE ;
-    color:#1A5746;
+    background-color:#40DAAE ;/* color of background */
+    color:#1A5746;/* color of text */
     width: 30%; /* how far the input spreads across the page */
-    padding:10px;
-    margin-bottom:20px;
+    padding:10px;/* area around box */
+    margin-bottom:20px;/* pixels between other box*/
 
 }
 
@@ -46,23 +52,53 @@ a:hover{
 }
 
 body {
-    background-color:#9A30AF ;
+    background-color:#9A30AF ;/* color of background */
 
 }
 
 h1 {
-    color:#3A3538;
-    font-size: 70px;
-    background-color:#842A93;
+    color:#3A3538;/* color of text */
+    font-size: 70px;/* size of text */
+    background-color:#842A93;/* color of background */
 
 }
 
 #checkbox {
-    width:6%;
+    width:6%;/* width of box */
+    accent-color: #40DAAE;/*changing color when selected*/
+
 }
 
 #logo {
-    position: fixed;
-    top: 50px;
-    right: 300px;
+    position: fixed;/* position on screen is fixed to designated coordinates */
+    top: 50px;/* pixels from top */
+    right: 300px;/* pixels from right */
+
+}
+
+img {
+    position: fixed;/* position on screen is fixed to designated coordinates */
+    top: 350px;/* pixels from top */
+    right: 300px;/* pixels from right */
+
+}
+
+th {
+    background-color:#40DAAE ;/* color of background */
+    color:#1A5746;/* color of text */
+    font-size:30px; /* size of text */
+    text-decoration: none; /*  removes underline from hyperlink */
+    font-weight: bold;/*  bold the text */
+    letter-spacing: 3px;/* spacing between letters of text */
+
+}
+
+td {
+    border-left :solid 1px white;/* color size and format of border left */
+    border-right :solid 1px white;/* color size and format of border right */
+}
+
+table {
+    -webkit-border-horizontal-spacing: 20px;/* border around text horizontally */
+
 }
