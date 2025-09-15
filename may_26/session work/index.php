@@ -1,12 +1,17 @@
 <?php //this opens the php code section
+
 session_start();
+
+if ($_server["REQUEST_METHOD"] === "POST") {
+
+}
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
 echo "<html>";  // opening html
     echo "<head>";  // opening head
 
-    echo "<title>page title</title>";  // creating title
+    echo "<title>session work</title>";  // creating title
     echo "<link rel='stylesheet' type='text/css' href='css\styles.css'>";// getting css formatting for website from external
 
     echo "</head>";
@@ -18,7 +23,16 @@ echo "<html>";  // opening html
             require_once "assets/nav.php";// presenting navigation bar
 
             echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
+                echo "<h2>session work</h2>";
 
+                //form takes user input stores in session to be outputted elsewhere
+
+                echo "<form method='post' action=''>";
+
+                echo "<input type='text' name='input' placeholder='input'>";
+                echo "<input type='submit' name='submit' value='submit'>";
+
+                echo "</form>";
 
             echo "</div>";
 
