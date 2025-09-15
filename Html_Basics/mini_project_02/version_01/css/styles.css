@@ -9,7 +9,7 @@
 }
 
 .content {
-    margin-top:20px;
+    margin-top:20px;/*space between nav and context*/
     color:#232323;/* color of text */
     font-size:20px; /* size of text */
 }
@@ -94,8 +94,8 @@ th {
 }
 
 td {
-    border-left :solid 1px white;/* color size and format of border left */
-    border-right :solid 1px white;/* color size and format of border right */
+    border-left :solid 2px white;/* color size and format of border left */
+    border-right :solid 2px white;/* color size and format of border right */
 }
 
 table {

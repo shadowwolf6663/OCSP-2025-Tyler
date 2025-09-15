@@ -33,11 +33,11 @@ echo "<html>";  // opening html
                     // I added a bunch of empty rows as no data is input yet since it's only a design and not fully functional
 
                     echo "<tr>";
-                        echo "<td>N/A</td>";
-                        echo "<td>N/A</td>";
-                        echo "<td>N/A</td>";
-                        echo "<td>N/A</td>";
-                        echo "<td>N/A</td>";
+                        echo "<td>19/11/2025</td>";
+                        echo "<td>14:30</td>";
+                        echo "<td>Online</td>";
+                        echo "<td>Watkins</td>";
+                        echo "<td>Math</td>";
                     echo "</tr>";
                     echo "<tr>";
                         echo "<td>N/A</td>";
