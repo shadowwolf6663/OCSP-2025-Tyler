@@ -2,7 +2,10 @@
 
 session_start();
 
-if ($_server["REQUEST_METHOD"] === "POST") {
+require_once "assets/common.php";
+
+if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+    $_SESSION["message"] = $_POST["input"];
 
 }
 
@@ -23,6 +26,7 @@ echo "<html>";  // opening html
             require_once "assets/nav.php";// presenting navigation bar
 
             echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
+                echo user_msg();
                 echo "<h2>session work</h2>";
 
                 //form takes user input stores in session to be outputted elsewhere
