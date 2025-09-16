@@ -2,7 +2,6 @@
     display: flex;/* converting elements into boxes */
     justify-content: center;/* making focus to the left */
     text-align: center;/* putting text to left side */
-    align-items: center;
     flex-direction: column;/* makes it go down instead of across*/
     font-family:Arial,Helvetica,sans-serif;/* default font */
     margin-left:30px;/* adding space to left so it doesnt rest on side of the screen*/
@@ -27,27 +26,12 @@ nav li:hover {/*sets up roll over for the nav bar */
 
 }
 
-body {
-    background-color: #AAFFAA;
-}
-
-h2 {
-    background-color: #40DAAE;
-    font-weight: bold;
-    width:40%;
-
-}
-
 #good{
-    background-color:green;
-}
 
+}
 #bad{
-    background-color:red;
-}
 
+}
 #none{
-    background-color: yellow;
+
 }
-
-
