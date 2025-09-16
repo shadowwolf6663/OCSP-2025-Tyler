@@ -27,7 +27,6 @@ echo "<html>";  // opening html
             require_once "assets/nav.php";// presenting navigation bar
 
             echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
-                user_msg();
 
                 //form takes user input stores in session to be outputted elsewhere
 
@@ -39,6 +38,13 @@ echo "<html>";  // opening html
                     echo "<input type='submit' name='submit' value='submit'>";
 
                 echo "</form>";
+                echo "<br>";
+                echo sanmsg();
+                echo "<br>";
+                echo sanint();
+                echo "<br>";
+                echo sanflo();
+                echo "<br>";
 
             echo "</div>";
 
