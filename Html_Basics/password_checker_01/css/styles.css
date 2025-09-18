@@ -1,10 +1,15 @@
 .container {
     display: flex;/* converting elements into boxes */
-    justify-content: center;/* making focus to the left */
-    text-align: center;/* putting text to left side */
+    justify-content: left;/* making focus to the left */
+    text-align: left;/* putting text to left side */
     flex-direction: column;/* makes it go down instead of across*/
     font-family:Arial,Helvetica,sans-serif;/* default font */
     margin-left:30px;/* adding space to left so it doesnt rest on side of the screen*/
+    background-color: #5ED991;
+}
+
+body {
+    background-color: #5ED991;
 }
 
 nav ul {
@@ -13,12 +18,15 @@ nav ul {
     padding:0;/*removes padding*/
     display: flex; /* stops moving vertically*/
     justify-content: flex-start;/* starts stacking horizontally*/
-    background-color: #fff;/* adds a background color*/
 
 }
 
 nav li{/* creates space around li items in nav bar */
     padding:5px 20px 5px 20px;/* top right bottom left padding*/
+    font-size: 20px;
+    margin:10px;
+    background-color: #3DFFEF;
+    text-decoration: none;
 }
 
 nav li:hover {/*sets up roll over for the nav bar */
@@ -33,16 +41,32 @@ h1{
     background-color: #40DAAE;
     color: #6E0000;
     padding: 15px;
-}
-
-a {
-    padding:10px;
-
 
 }
+
+p {
+    background-color: #3DFFEF;
+    width:500px;
+    text-align: center;
+}
+
+input {
+    font-size: 30px;
+    background-color: #3DFFEF;
+    width: 50%;
+    padding: 10px 30px 10px 30px;
+
+}
+
+input::placeholder{
+    color:#9E0000;
+    font-weight: bold;
+}
+
 
 #good{
     color: green;
+
 
 }
 
@@ -51,3 +75,14 @@ a {
 
 }
 
+#logo {
+    position: fixed;/* position on screen is fixed to designated coordinates */
+    top: 50px;/* pixels from top */
+    right: 100px;/* pixels from right */
+    width:450px;
+
+}
+
+.content{
+    margin-top:30px;
+}

@@ -30,7 +30,7 @@ echo "<div class ='content'>"; // class context to give all items that give info
 
 echo "<form method='post' action=''>";
 
-echo "<input type='password' name='password' placeholder='password'>";
+echo "<input type='password' name='password' placeholder='password: '>";
 
 echo "</form>";
 
