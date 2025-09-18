@@ -23,9 +23,15 @@ nav ul {
 
 nav li{/* creates space around li items in nav bar */
     padding:5px 20px 5px 20px;/* top right bottom left padding*/
-    font-size: 20px;
-    margin:10px;
+    font-size: 30px;
+    margin-right: 25px;
     background-color: #3DFFEF;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+nav a {
     text-decoration: none;
 }
 
@@ -46,7 +52,8 @@ h1{
 
 p {
     background-color: #3DFFEF;
-    width:500px;
+    font-size: 25px;
+    width:1300px;
     text-align: center;
 }
 
@@ -68,6 +75,10 @@ input::placeholder{
     color: green;
 
 
+}
+
+#medium{
+    color:yellow;
 }
 
 #bad{
