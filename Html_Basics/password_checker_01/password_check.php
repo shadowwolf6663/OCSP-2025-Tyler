@@ -1,12 +1,11 @@
 <?php //this opens the php code section
-session_start();
+session_start(); // starts session to store values for page
 
-require_once "assets/common.php";
+require_once "assets/common.php"; // accesses common to grab my php functions
 
-if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+if ($_SERVER["REQUEST_METHOD"] === 'POST') { // checks input
 
-    $_SESSION["password"] = $_POST["password"];
-
+    $_SESSION["password"] = $_POST["password"]; // setting a session value from inputs
 
 }
 
@@ -28,22 +27,22 @@ echo "</head>";
 
         echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
 
-            echo "<form method='post' action=''>";
+            echo "<form method='post' action=''>"; // initiates form
 
-                echo "<input type='password' name='password' placeholder='password: '>";
+                echo "<input type='password' name='password' placeholder='password: '>"; // input box for password
 
             echo "</form>";
 
-            echo num_check();
-            echo len_check();
-            echo lower_check();
-            echo upper_check();
-            echo special_check();
-            echo first_special_check();
-            echo last_special_check();
-            echo common_check();
-            echo first_num_check();
-            echo strength_check();
+            echo num_check(); // calls function and echos value returned to screen
+            echo len_check(); // calls function and echos value returned to screen
+            echo lower_check(); // calls function and echos value returned to screen
+            echo upper_check(); // calls function and echos value returned to screen
+            echo special_check(); // calls function and echos value returned to screen
+            echo first_special_check(); // calls function and echos value returned to screen
+            echo last_special_check(); // calls function and echos value returned to screen
+            echo common_check(); // calls function and echos value returned to screen
+            echo first_num_check(); // calls function and echos value returned to screen
+            echo strength_check(); // calls function and echos value returned to screen
 
 
 

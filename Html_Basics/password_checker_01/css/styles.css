@@ -5,11 +5,11 @@
     flex-direction: column;/* makes it go down instead of across*/
     font-family:Arial,Helvetica,sans-serif;/* default font */
     margin-left:30px;/* adding space to left so it doesnt rest on side of the screen*/
-    background-color: #5ED991;
+    background-color: #5ED991; /* setting background colour of element */
 }
 
 body {
-    background-color: #5ED991;
+    background-color: #5ED991; /* setting background colour of element */
 }
 
 nav ul {
@@ -24,16 +24,16 @@ nav ul {
 nav li{/* creates space around li items in nav bar */
     padding:5px 20px 5px 20px;/* top right bottom left padding*/
     font-size: 30px;
-    margin-right: 25px;
-    background-color: #3DFFEF;
-    text-decoration: none;
-    font-weight: bold;
+    margin-right: 25px;/* adding space to right so boxes arent pressed together/
+    background-color: #3DFFEF; /* setting background colour of element */
+    text-decoration: none; /* removes underline from hyperlink */
+    font-weight: bold;/* setting text to bold*/
 
 }
 
 nav a {
-    text-decoration: none;
-    color: #000000;
+    text-decoration: none; /* removes underline from hyperlink */
+    color: #000000; /* setting colour of text */
 }
 
 nav li:hover {/*sets up roll over for the nav bar */
@@ -43,48 +43,48 @@ nav li:hover {/*sets up roll over for the nav bar */
 
 h1{
     text-align: left;/* making focus to the left */
-    font-size: 40px;
-    font-weight: bold;
-    background-color: #096601;
-    color: #6E0000;
-    padding: 15px;
-    width:30%;
+    font-size: 40px;/* setting text size*/
+    font-weight: bold;/* setting text to bold*/
+    background-color: #096601; /* setting background colour of element */
+    color: #6E0000; /* setting colour of text */
+    padding: 15px;/* padding all around the element*/
+    width:30%;/* setting size of header to 30% of screen size*/
 
 }
 
 p {
-    background-color: #3DFFEF;
-    font-size: 25px;
-    width:1300px;
-    text-align: center;
+    background-color: #3DFFEF; /* setting background colour of element */
+    font-size: 25px;/* setting text size */
+    width:1300px;/* setting size of text box*/
+    text-align: center;/* aligning text to centre of element*/
 }
 
 input {
-    font-size: 30px;
-    background-color: #3DFFEF;
-    width: 50%;
-    padding: 10px 20px 10px 20px;
+    font-size: 30px;/* setting text size*/
+    background-color: #3DFFEF; /* setting background colour of element */
+    width: 50%;/* setting size to half the size of page*/
+    padding: 10px 20px 10px 20px;/* padding around text*/
 
 }
 
 input::placeholder{
-    color:#9E0000;
+    color:#9E0000; /* setting colour of text */
     font-weight: bold;
 }
 
 
 #good{
-    color: green;
+    color: green; /* setting colour of text */
 
 
 }
 
 #medium{
-    color:yellow;
+    color:yellow; /* setting colour of text */
 }
 
-#bad{
-    color: red;
+#bad{ /* */
+    color: red; /* setting colour of text */
 
 }
 
@@ -92,10 +92,10 @@ input::placeholder{
     position: fixed;/* position on screen is fixed to designated coordinates */
     top: 50px;/* pixels from top */
     right: 100px;/* pixels from right */
-    width:450px;
+    width:450px;/* size of image*/
 
 }
 
 .content{
-    margin-top:30px;
+    margin-top:30px; /* space between the nav bar and content lowering it*/
 }
