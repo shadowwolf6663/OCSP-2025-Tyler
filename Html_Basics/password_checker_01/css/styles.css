@@ -33,6 +33,7 @@ nav li{/* creates space around li items in nav bar */
 
 nav a {
     text-decoration: none;
+    color: #000000;
 }
 
 nav li:hover {/*sets up roll over for the nav bar */
@@ -44,9 +45,10 @@ h1{
     text-align: left;/* making focus to the left */
     font-size: 40px;
     font-weight: bold;
-    background-color: #40DAAE;
+    background-color: #096601;
     color: #6E0000;
     padding: 15px;
+    width:30%;
 
 }
 
@@ -61,7 +63,7 @@ input {
     font-size: 30px;
     background-color: #3DFFEF;
     width: 50%;
-    padding: 10px 30px 10px 30px;
+    padding: 10px 20px 10px 20px;
 
 }
 

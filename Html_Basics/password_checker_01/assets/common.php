@@ -89,26 +89,23 @@ function lower_check(){
 }
 
 function special_check(){
-
     if (isset($_SESSION["password"])) { // checks variable has been set
 
-        if  (!preg_match('/[a-zA-Z0-9_]/',$_SESSION["password"])){
-            $special_check = "<div id='good'>contains a special character</div>"; // stored
-            $GLOBALS['strength']+=1;
+        if (preg_match('/[^a-zA-Z0-9_]/', $_SESSION["password"])) {
+            $special_check = "<div id='good'>contains a special character</div>";
+            $GLOBALS['strength'] += 1;
             return $special_check;
 
-        } else{
-            $special_check = "<div id='bad'>doesnt contain a special character</div>"; // stored
+        } else {
+            $special_check = "<div id='bad'>doesn’t contain a special character</div>";
             return $special_check;
-
         }
 
-    }
-    else {
+    } else {
         return "";
-
     }
 }
+
 
 function first_special_check(){
 
@@ -116,11 +113,11 @@ function first_special_check(){
 
         if (!preg_match('/[a-zA-Z0-9_]/',$_SESSION["password"][0])) {
             $first_special_check = "<div id='bad'>first character  is special</div>"; // stored
-            $GLOBALS['strength']+=1;
             return $first_special_check;
 
         } else{
             $first_special_check = "<div id='good'>first character isn't special</div>"; // stored
+            $GLOBALS['strength']+=1;
             return $first_special_check;
 
         }
@@ -138,11 +135,11 @@ function last_special_check(){
 
         if (!preg_match('/[a-zA-Z0-9_]/',$_SESSION["password"][strlen($_SESSION["password"])-1])){
             $last_special_check = "<div id='bad'>last character is special</div>"; // stored
-            $GLOBALS['strength']+=1;
             return $last_special_check;
 
         } else{
             $last_special_check = "<div id='good'>last character isn't special</div>"; // stored
+            $GLOBALS['strength']+=1;
             return $last_special_check;
 
         }
@@ -155,19 +152,19 @@ function last_special_check(){
 }
 
 function common_check(){
+    $common_words=["password","qwerty"];
 
     if (isset($_SESSION["password"])) { // checks variable has been set
+        foreach ($common_words as $word) {
+            if (str_contains($_SESSION["password"], $word) ) {
+                $common_check = "<div id='bad'>contains common password, ".$word."</div>"; // stored
+                return $common_check;
 
-        if (!str_contains($_SESSION["password"],'password')){
-            $common_check = "<div id='good'>doesnt contains common password, password</div>"; // stored
-            $GLOBALS['strength']+=1;
-            return $common_check;
-
-        } else{
-            $common_check = "<div id='bad'>contains common password, password</div>"; // stored
-            return $common_check;
-
+            }
         }
+        $common_check = "<div id='good'>doesnt contain a common password</div>"; // stored
+        $GLOBALS['strength'] += 1;
+        return $common_check;
 
     }
     else {
@@ -201,7 +198,15 @@ function strength_check(){
     if (isset($_SESSION["password"])) {
         $_SESSION["password"] = "";
         unset($_SESSION["password"]);
-        $strength="strength of password: ".$GLOBALS['strength']. "/9";
+        if ($GLOBALS['strength'] >=6){
+            $strength="<div id= 'good'> strength of password: ".$GLOBALS['strength']. "/9</div> ";
+        }
+        elseif($GLOBALS['strength'] >=3){
+            $strength="<div id= 'medium'> strength of password: ".$GLOBALS['strength']. "/9</div> ";
+        }
+        else{
+            $strength="<div id= 'bad'> strength of password: ".$GLOBALS['strength']. "/9</div> ";
+        }
         return $strength;
 
     }
