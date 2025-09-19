@@ -115,12 +115,12 @@ function first_special_check(){
     if (isset($_SESSION["password"])) { // checks variable has been set
 
         if (!preg_match('/[a-zA-Z0-9_]/',$_SESSION["password"][0])) {
-            $first_special_check = "<div id='good'>first character  is special</div>"; // stored
+            $first_special_check = "<div id='bad'>first character  is special</div>"; // stored
             $GLOBALS['strength']+=1;
             return $first_special_check;
 
         } else{
-            $first_special_check = "<div id='bad'>first character isn't special</div>"; // stored
+            $first_special_check = "<div id='good'>first character isn't special</div>"; // stored
             return $first_special_check;
 
         }
@@ -137,12 +137,12 @@ function last_special_check(){
     if (isset($_SESSION["password"])) { // checks variable has been set
 
         if (!preg_match('/[a-zA-Z0-9_]/',$_SESSION["password"][strlen($_SESSION["password"])-1])){
-            $last_special_check = "<div id='good'>last character isn't special</div>"; // stored
+            $last_special_check = "<div id='bad'>last character is special</div>"; // stored
             $GLOBALS['strength']+=1;
             return $last_special_check;
 
         } else{
-            $last_special_check = "<div id='bad'>last character is special</div>"; // stored
+            $last_special_check = "<div id='good'>last character isn't special</div>"; // stored
             return $last_special_check;
 
         }
@@ -158,13 +158,13 @@ function common_check(){
 
     if (isset($_SESSION["password"])) { // checks variable has been set
 
-        if (str_contains($_SESSION["password"],'password')){
-            $common_check = "<div id='bad'>doesnt contains common password, password</div>"; // stored
+        if (!str_contains($_SESSION["password"],'password')){
+            $common_check = "<div id='good'>doesnt contains common password, password</div>"; // stored
             $GLOBALS['strength']+=1;
             return $common_check;
 
         } else{
-            $common_check = "<div id='good'>doesnt contain common password, password</div>"; // stored
+            $common_check = "<div id='bad'>contains common password, password</div>"; // stored
             return $common_check;
 
         }
