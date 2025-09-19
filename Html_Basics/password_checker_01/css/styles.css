@@ -1,4 +1,5 @@
 .container {
+
     display: flex;/* converting elements into boxes */
     justify-content: left;/* making focus to the left */
     text-align: left;/* putting text to left side */
@@ -6,13 +7,17 @@
     font-family:Arial,Helvetica,sans-serif;/* default font */
     margin-left:30px;/* adding space to left so it doesnt rest on side of the screen*/
     background-color: #5ED991; /* setting background colour of element */
+
 }
 
 body {
+
     background-color: #5ED991; /* setting background colour of element */
+
 }
 
 nav ul {
+
     list-style: none;/*removes bullet points*/
     margin:0;/*removes margin*/
     padding:0;/*removes padding*/
@@ -22,9 +27,10 @@ nav ul {
 }
 
 nav li{/* creates space around li items in nav bar */
+
     padding:5px 20px 5px 20px;/* top right bottom left padding*/
     font-size: 30px;
-    margin-right: 25px;/* adding space to right so boxes arent pressed together/
+    margin-right: 25px;/* adding space to right so boxes arent pressed together*/
     background-color: #3DFFEF; /* setting background colour of element */
     text-decoration: none; /* removes underline from hyperlink */
     font-weight: bold;/* setting text to bold*/
@@ -32,12 +38,14 @@ nav li{/* creates space around li items in nav bar */
 }
 
 nav a {
+
     text-decoration: none; /* removes underline from hyperlink */
     color: #000000; /* setting colour of text */
 }
 
 nav li:hover {/*sets up roll over for the nav bar */
-    background-color: #873245;/*changes color on hover*/
+
+    background-color: #40DAAE;/*changes color on hover*/
 
 }
 
@@ -68,27 +76,34 @@ input {
 }
 
 input::placeholder{
+
     color:#9E0000; /* setting colour of text */
     font-weight: bold;
+
 }
 
 
 #good{
+
     color: green; /* setting colour of text */
 
 
 }
 
 #medium{
+
     color:yellow; /* setting colour of text */
+
 }
 
-#bad{ /* */
+#bad{
+
     color: red; /* setting colour of text */
 
 }
 
 #logo {
+
     position: fixed;/* position on screen is fixed to designated coordinates */
     top: 50px;/* pixels from top */
     right: 100px;/* pixels from right */
@@ -97,5 +112,7 @@ input::placeholder{
 }
 
 .content{
+
     margin-top:30px; /* space between the nav bar and content lowering it*/
+
 }
