@@ -3,11 +3,7 @@ session_start(); // starts session to store values for page
 
 require_once "assets/common.php"; // accesses common to grab my php functions
 
-if ($_SERVER["REQUEST_METHOD"] === 'POST') { // checks input
 
-    $_SESSION["password"] = $_POST["password"]; // setting a session value from inputs
-
-}
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
@@ -33,16 +29,25 @@ echo "</head>";
 
             echo "</form>";
 
-            echo num_check(); // calls function and echos value returned to screen
-            echo len_check(); // calls function and echos value returned to screen
-            echo lower_check(); // calls function and echos value returned to screen
-            echo upper_check(); // calls function and echos value returned to screen
-            echo special_check(); // calls function and echos value returned to screen
-            echo first_special_check(); // calls function and echos value returned to screen
-            echo last_special_check(); // calls function and echos value returned to screen
-            echo common_check(); // calls function and echos value returned to screen
-            echo first_num_check(); // calls function and echos value returned to screen
-            echo strength_check(); // calls function and echos value returned to screen
+            if ($_SERVER["REQUEST_METHOD"] === 'POST') { // checks input
+
+                $_SESSION["strength"] = 0; // default value
+                $_SESSION["password"] = $_POST["password"]; // setting a session value from inputs
+                echo num_check(); // calls function and echos value returned to screen
+                echo len_check(); // calls function and echos value returned to screen
+                echo lower_check(); // calls function and echos value returned to screen
+                echo upper_check(); // calls function and echos value returned to screen
+                echo special_check(); // calls function and echos value returned to screen
+                echo first_special_check(); // calls function and echos value returned to screen
+                echo last_special_check(); // calls function and echos value returned to screen
+                echo common_check(); // calls function and echos value returned to screen
+                echo first_num_check(); // calls function and echos value returned to screen
+                echo strength_check(); // calls function and echos value returned to screen
+                unset($_SESSION["strength"]); // unsets variable
+
+            }
+
+
 
 
 
