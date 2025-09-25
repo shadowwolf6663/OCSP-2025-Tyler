@@ -6,14 +6,19 @@
     font-family:Arial,Helvetica,sans-serif;/* default font */
     margin-left:30px;/* adding space to left so it doesnt rest on side of the screen*/
 }
+.topbari{
+    border :1px solid saddlebrown;
+}
 
 nav ul {
+
+    border :1px solid green;
     list-style: none;/*removes bullet points*/
-    margin:0;/*removes margin*/
+    width: 300px;
+    margin:auto;
     padding:0;/*removes padding*/
-    display: flex; /* stops moving vertically*/
-    justify-content: flex-start;/* starts stacking horizontally*/
     background-color: #fff;/* adds a background color*/
+    justify-content: flex-start;
 
 }
 
@@ -25,4 +30,28 @@ nav li:hover {/*sets up roll over for the nav bar */
     background-color: #873245;/*changes color on hover*/
 
 }
+
+h1 {
+    color: red;
+    font-weight: bold;
+    text-underline: #000000;
+}
+
+img {
+    width:300px;
+}
+
+body {
+    background-color: peachpuff;
+}
+
+p {
+    background-color: cyan;
+}
+
+#submit{
+    font-size: 30px;
+}
+
+
 
