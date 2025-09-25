@@ -18,7 +18,7 @@ function num_check(){ // declaring function
             $numcheck = "<div id='bad'>doesnt contain a integer</div>"; // creating a message to be returned
             return $numcheck; // return value to calling function
 
-        }
+        }   
 
     }
     else { // if no other conditions are met
