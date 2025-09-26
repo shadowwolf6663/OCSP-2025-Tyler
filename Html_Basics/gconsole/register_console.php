@@ -1,6 +1,9 @@
 <?php //this opens the php code section
 session_start();
 
+require_once "assets/dbconn.php";
+require_once "assets/common.php";
+
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
 echo "<html>";  // opening html
@@ -18,7 +21,22 @@ require_once "assets/topbar.php"; // presenting header
 require_once "assets/nav.php";// presenting navigation bar
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
-echo "<form method='post' action='login.php'>";
+echo "<br>";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    try {
+        new_console(dbconnect_insert(), $_POST);
+        $_SESSION["usermessage"]="SUCCESS: Console created!";
+        echo user_message();
+
+    } catch (Exception $e){
+
+        $_SESSION["usermessage"]="ERROR: Could not create console: ".$e->getMessage();
+        throw $e;
+    }
+
+}
+echo "<br>";
+echo "<form method='post' action=''>";
 echo "<input type= 'text' name ='console_name' placeholder='console name'>";
 echo "<br>";
 echo "<input type= 'text' name ='release_date' placeholder='release date'>";
@@ -27,7 +45,7 @@ echo "<input type= 'number' name ='controller_no' placeholder='controller number
 echo "<br>";
 echo "<input type= 'text' name ='manufacturer' placeholder='manufacturer'>";
 echo "<br>";
-echo "<input type= 'number' name ='bits' placeholder='bits'>";
+echo "<input type= 'number' name ='bit' placeholder='bits'>";
 echo "<br>";
 echo "<input type= 'submit' value='register console' id='submit'>";
 echo "</form>";

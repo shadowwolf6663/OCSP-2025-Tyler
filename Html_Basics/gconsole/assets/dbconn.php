@@ -11,15 +11,15 @@ function dbconnect_insert()
 
 
     try{
-        $conn=new pdo("mysql:host=$servername;port-3306;dbname=$dbname", $dbusername, $dbpassword);
+        $conn=new pdo("mysql:host=$servername;port=3306;dbname=$dbname", $dbusername, $dbpassword);
         // alternatively we could use mysqli but its depreciated and not considered good practice and dbo will connect to any type of data source from 1 command set so if we migrated database systems it would be easy to change
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // sets error modes
         return $conn;
     }
     catch(PDOException $e){ // catch any errors
         error_log("database error: ".$e->getMessage()); // logs error
-
         throw $e;// outputs the error
     }
 
 }
+

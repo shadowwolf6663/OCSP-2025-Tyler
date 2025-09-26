@@ -18,7 +18,7 @@ echo "<html>";  // opening html
             require_once "assets/nav.php";// presenting navigation bar
 
         echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
-            echo "<form method='post' action='login.php'>";
+            echo "<form method='post' action=''>";
             echo "<input type= 'text'name ='username' placeholder='username'>";
             echo "<br>";
             echo "<input type= 'password'name ='password' placeholder='password'>";

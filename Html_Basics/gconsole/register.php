@@ -1,6 +1,9 @@
 <?php //this opens the php code section
 session_start();
 
+require_once "assets/dbconn.php";
+require_once "assets/common.php";
+
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
 echo "<html>";  // opening html
@@ -18,7 +21,24 @@ require_once "assets/topbar.php"; // presenting header
 require_once "assets/nav.php";// presenting navigation bar
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
-echo "<form method='post' action='login.php'>";
+
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    try {
+        user_check(dbconnect_insert(), $_POST);
+        $_SESSION["usermessage"]="SUCCESS: Console created!";
+        echo user_message();
+
+    } catch (Exception $e){
+
+        $_SESSION["usermessage"]="ERROR: Could not create console: ".$e->getMessage();
+        throw $e;
+    }
+
+}
+
+
+echo "<form method='post' action=''>";
 echo "<input type= 'text' name ='username' placeholder='username'>";
 echo "<br>";
 echo "<input type= 'password' name ='password' placeholder='password'>";
