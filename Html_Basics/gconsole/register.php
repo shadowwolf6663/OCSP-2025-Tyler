@@ -1,8 +1,8 @@
 <?php //this opens the php code section
-session_start();
+session_start(); // start session
 
-require_once "assets/dbconn.php";
-require_once "assets/common.php";
+require_once "assets/dbconn.php"; // connects to another file
+require_once "assets/common.php"; // connects to another file
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
@@ -23,33 +23,43 @@ require_once "assets/nav.php";// presenting navigation bar
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
 
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    try {
-        user_check(dbconnect_insert(), $_POST);
-        $_SESSION["usermessage"]="SUCCESS: Console created!";
-        echo user_message();
+if ($_SERVER["REQUEST_METHOD"] === "POST") {// checks request method
+    try {// trys to run this code
 
-    } catch (Exception $e){
+         if (user_check(dbconnect_select(), $_POST["username"])){//checking if it returns true
 
-        $_SESSION["usermessage"]="ERROR: Could not create console: ".$e->getMessage();
-        throw $e;
+             $_SESSION["usermessage"] = "created user";// assigning message
+             reg_user(dbconnect_insert(),$_POST);
+
+
+         }else{
+
+             $_SESSION["usermessage"] = "user exists!";// assigning message
+
+         }
+        echo user_message();// echo message to screen
+    } catch (Exception $e){//if code has an error catch it as $e
+
+        $_SESSION["usermessage"]="ERROR: Could not create console: ".$e->getMessage();// make a message for user with error
+        throw $e;// throw error to screen
+
     }
 
 }
 
 
-echo "<form method='post' action=''>";
-echo "<input type= 'text' name ='username' placeholder='username'>";
-echo "<br>";
-echo "<input type= 'password' name ='password' placeholder='password'>";
-echo "<br>";
-echo "<input type= 'text' name ='signupdate' placeholder='sign up date'>";
-echo "<br>";
-echo "<input type= 'text' name ='dob' placeholder='date of birth'>";
-echo "<br>";
-echo "<input type= 'text' name ='country' placeholder='county'>";
-echo "<br>";
-echo "<input type= 'submit' value='register' id='submit'>";
+echo "<form method='post' action=''>";// opens a form
+    echo "<input type= 'text' name ='username' placeholder='username'>";// creates input box
+    echo "<br>"; // breaks to next line
+    echo "<input type= 'password' name ='password' placeholder='password'>";// creates input box
+    echo "<br>";// breaks to next line
+    echo "<input type= 'text' name ='signupdate' placeholder='sign up date'>";// creates input box
+    echo "<br>";// breaks to next line
+    echo "<input type= 'text' name ='dob' placeholder='date of birth'>";// creates input box
+    echo "<br>";// breaks to next line
+    echo "<input type= 'text' name ='country' placeholder='county'>";// creates input box
+    echo "<br>";// breaks to next line
+    echo "<input type= 'submit' value='register' id='submit'>";// creates input box
 echo "</form>";
 
 
