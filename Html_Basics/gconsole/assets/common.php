@@ -84,6 +84,33 @@ function reg_user($conn, $post){//creates function
 }
 
 
+function login($conn, $post){
+    try{
+        $conn = dbconnect_select();
+        $sql = "SELECT * FROM user WHERE username=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindparam(1, $post["username"]);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $conn = null;
+        if($result){
+            return $result;
+        }else{
+            $_SESSION["error"] = "user not found";
+            header("Location: login.php");
+            exit;
+        }
+    }catch(PDOException $e){
+        error_log($e->getMessage());// logs error
+        throw new exception($e);
+    } catch(Exception $e){
+        error_log($e->getMessage());// logs error
+        throw new exception($e);
+
+    }
+}
+
+
 function user_message(){
     if(isset($_SESSION["usermessage"])){
         $message= $_SESSION["usermessage"];
@@ -92,7 +119,7 @@ function user_message(){
 
     }else{
         $message= "";
-        return $_SESSION["usermessage"];
+        return $message;
     }
 }
 

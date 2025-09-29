@@ -1,6 +1,10 @@
 <?php //this opens the php code section
 session_start();
 
+require_once "assets/dbconn.php";
+require_once "assets/common.php";
+
+
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
 echo "<html>";  // opening html
@@ -18,6 +22,24 @@ echo "<html>";  // opening html
             require_once "assets/nav.php";// presenting navigation bar
 
         echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
+            if (isset($_SESSION["user"])){
+                $_SESSION["usermessage"] = "error: you are already logged in";
+                header("Location: index.php");
+                exit;}//stops further execution
+            elseif($_SERVER['REQUEST_METHOD'] === "POST"){
+                $usr=login(dbconnect_insert(),$_POST);
+                if ($usr&& password_verify($_POST["password"],$usr["password"])){
+                    $_SESSION["user"] = true;
+                    $_SESSION["usermessage"] = "login success";
+                    header("Location: index.php");
+                    exit;
+
+                }else{
+                    $_SESSION["usermessage"] = "login failed";
+                    header("Location: login.php");
+                    exit;
+                }
+                }
             echo "<form method='post' action=''>";
             echo "<input type= 'text'name ='username' placeholder='username'>";
             echo "<br>";
