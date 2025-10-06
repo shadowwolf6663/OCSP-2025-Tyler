@@ -5,9 +5,9 @@ function dbconnect_insert()
 
     // very unsecure shouldn't be stored in open plain text as it poses many security issues should be stored in an external file with no connectivity or set as an environment variable in the webserver software
     $servername ="localhost"; // sets server name
-    $dbusername = "gconsoleinsert";
+    $dbusername = "doctor_booking_insert";
     $dbpassword = "password1G";
-    $dbname = "gconsole";
+    $dbname = "doctor_booking";
 
 
     try{
@@ -26,9 +26,9 @@ function dbconnect_insert()
 function dbconnect_select(){
     // very unsecure shouldn't be stored in open plain text as it poses many security issues should be stored in an external file with no connectivity or set as an environment variable in the webserver software
     $servername ="localhost"; // sets server name
-    $dbusername = "gconsoleselect";
+    $dbusername = "doctor_booking_select";
     $dbpassword = "password1G";
-    $dbname = "gconsole";
+    $dbname = "doctor_booking";
 
 
     try{

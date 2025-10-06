@@ -4,15 +4,17 @@ try{
 function new_console($conn, $post)
 {
 
-    $sql = "INSERT INTO console(manufacturer,c_name,release_date,controller_no,bit) VALUES(?,?,?,?,?)";// doing a prepared statement by sending values separately, bound separately
+    $sql = "INSERT INTO patient(first_name,middle_name,second_name,gender,age,password) VALUES(?,?,?,?,?,?)";// doing a prepared statement by sending values separately, bound separately
     $stmt = $conn->prepare($sql);  // prepare to sql
 
     // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
-    $stmt->bindparam(1, $post["manufacturer"]);
-    $stmt->bindparam(2, $post["console_name"]);
-    $stmt->bindparam(3, $post["release_date"]);
-    $stmt->bindparam(4, $post["controller_no"]);
-    $stmt->bindparam(5, $post["bit"]);
+    $hpsw=password_hash($post['password'],PASSWORD_DEFAULT);
+    $stmt->bindparam(1,$post['patient_first']);
+    $stmt->bindparam(2,$post['patient_middle']);
+    $stmt->bindparam(3,$post['patient_second']);
+    $stmt->bindparam(4,$post['gender']);
+    $stmt->bindparam(5,$post['age']);
+    $stmt->bindparam(6,$hpsw);
     $stmt->execute(); // runs the insert query
 
     $conn = null;
@@ -87,9 +89,9 @@ function reg_user($conn, $post){//creates function
 function login($conn, $post){
     try{
         $conn = dbconnect_select();
-        $sql = "SELECT * FROM user WHERE username=?";
+        $sql = "SELECT * FROM patient WHERE first_name=?";
         $stmt = $conn->prepare($sql);
-        $stmt->bindparam(1, $post["username"]);
+        $stmt->bindparam(1, $post["patient_first"]);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $conn = null;

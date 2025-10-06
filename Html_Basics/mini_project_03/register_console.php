@@ -37,15 +37,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 echo "<br>";
 echo "<form method='post' action=''>";
-echo "<input type= 'text' name ='console_name' placeholder='console name'>";
+echo "<input type= 'text' name ='patient_first' placeholder='first name'>";
 echo "<br>";
-echo "<input type= 'text' name ='release_date' placeholder='release date'>";
+echo "<input type= 'text' name ='patient_middle' placeholder='middle name'>";
 echo "<br>";
-echo "<input type= 'number' name ='controller_no' placeholder='controller number'>";
+echo "<input type= 'text' name ='patient_second' placeholder='last name'>";
 echo "<br>";
-echo "<input type= 'text' name ='manufacturer' placeholder='manufacturer'>";
+echo "<input type= 'password' name ='password' placeholder='password'>";
 echo "<br>";
-echo "<input type= 'number' name ='bit' placeholder='bits'>";
+echo "<input type= 'text' name ='gender' placeholder='gender'>";
+echo "<br>";
+echo "<input type= 'number' name ='age' placeholder='age'>";
 echo "<br>";
 echo "<input type= 'submit' value='register console' id='submit'>";
 echo "</form>";

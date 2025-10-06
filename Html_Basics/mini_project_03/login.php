@@ -41,7 +41,7 @@ echo "<html>";  // opening html
                 }
                 }
             echo "<form method='post' action=''>";
-            echo "<input type= 'text'name ='username' placeholder='username'>";
+            echo "<input type= 'text'name ='first name' placeholder='first name'>";
             echo "<br>";
             echo "<input type= 'password'name ='password' placeholder='password'>";
             echo "<br>";
