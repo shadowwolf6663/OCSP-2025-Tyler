@@ -6,20 +6,27 @@
     font-family:Arial,Helvetica,sans-serif;/* default font */
     margin-left:30px;/* adding space to left so it doesnt rest on side of the screen*/
 }
-.topbari{
-    border :1px solid saddlebrown;
+
+.navi{
+    margin-top:30px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #000;
 }
 
 nav ul {
 
-    border :1px solid green;
-    list-style: none;/*removes bullet points*/
-    width: 300px;
-    margin:auto;
-    padding:0;/*removes padding*/
-    background-color: #fff;/* adds a background color*/
-    justify-content: flex-start;
-
+    list-style: none; /* Remove default bullet points */
+    display: flex; /* Arrange list items in a row */
+    justify-content: center; /* Center items horizontally */
+    width: 30%; /* Span full width to allow proper centering */
+    margin: auto;
+    text-decoration: none;
+    font-weight: bold;
+    color: #3DFFEF;
+    background-color: #3DFFEF; /* Optional: background color */
+    padding: 10px 0; /* Optional: spacing */
 }
 
 nav li{/* creates space around li items in nav bar */
@@ -32,7 +39,11 @@ nav li:hover {/*sets up roll over for the nav bar */
 }
 
 h1 {
-    color: red;
+    color: #332727;
+    background: #95a894;
+    font-size: 50px;
+    width: 50%;
+    margin:auto;
     font-weight: bold;
     text-underline: #000000;
 }
@@ -42,7 +53,7 @@ img {
 }
 
 body {
-    background-color: peachpuff;
+    background-color: #698183;
 }
 
 p {
