@@ -24,6 +24,7 @@ nav ul li a{
 
 nav ul {
 
+    border-radius: 50px;
     list-style: none; /* Remove default bullet points */
     display: flex; /* Arrange list items in a row */
     justify-content: center; /* Center items horizontally */
@@ -57,6 +58,7 @@ h1 {
     margin:auto;
     font-weight: bold;
     text-underline: #000000;
+    border-radius: 30px;
 
 }
 
