@@ -30,7 +30,9 @@ echo "<html>";  // opening html
                 $usr=login(dbconnect_insert(),$_POST);
                 if ($usr&& password_verify($_POST["password"],$usr["password"])){
                     $_SESSION["user"] = true;
+                    $_SESSION["userid"] = $usr["user_id"];
                     $_SESSION["usermessage"] = "login success";
+                    auditor(dbconnect_insert(),$_SESSION["userid"],"log","user has succesfully logged in");
                     header("Location: index.php");
                     exit;
 

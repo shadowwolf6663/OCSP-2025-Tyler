@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {// checks request method
 
              $_SESSION["usermessage"] = "created user";// assigning message
              reg_user(dbconnect_insert(),$_POST);
+             auditor(dbconnect_insert(),getnewuserid(dbconnect_insert(),$_POST["username"]),"reg","created new user");
 
 
          }else{

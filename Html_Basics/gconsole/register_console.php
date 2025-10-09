@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         new_console(dbconnect_insert(), $_POST);
         $_SESSION["usermessage"]="SUCCESS: Console created!";
+        auditor(dbconnect_insert(),$_SESSION["userid"],"reg","created new console: ".getnewconsoleid(dbconnect_select(),$_POST["console_name"]));
         echo user_message();
 
     } catch (Exception $e){

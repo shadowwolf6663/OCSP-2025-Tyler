@@ -83,6 +83,38 @@ function reg_user($conn, $post){//creates function
     }
 }
 
+function auditor($conn, $userid,$code,$long){
+    $sql = "INSERT INTO audit(date,userid,code,longdesc) VALUES(?,?,?,?)";
+    $stmt = $conn->prepare($sql);
+    $date = date("Y-m-d");
+    $stmt->bindparam(1, $date);
+    $stmt->bindparam(2, $userid);
+    $stmt->bindparam(3, $code);
+    $stmt->bindparam(4, $long);
+    $stmt->execute();
+    $conn = null;
+    return true;
+}
+
+function getnewuserid($conn,$username){
+    $sql = "SELECT user_id FROM user WHERE username=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindparam(1, $username);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $conn = null;
+    return $result["user_id"];
+}
+
+function getnewconsoleid($conn,$consolename){
+    $sql = "SELECT console_id FROM console WHERE c_name=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindparam(1, $consolename);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $conn = null;
+    return $result["console_id"];
+}
 
 function login($conn, $post){
     try{
