@@ -47,6 +47,8 @@ echo "<html>";  // opening html
             echo "<br>";
             echo "<input type= 'submit' value='login' id='submit'>";
             echo "</form>";
+            echo "<br>";
+            echo user_message();
 
 
         echo "</div>";

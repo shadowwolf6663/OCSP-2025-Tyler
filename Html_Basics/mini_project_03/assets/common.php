@@ -91,7 +91,7 @@ function login($conn, $post){
         $conn = dbconnect_select();
         $sql = "SELECT * FROM patient WHERE first_name=?";
         $stmt = $conn->prepare($sql);
-        $stmt->bindparam(1, $post["patient_first"]);
+        $stmt->bindparam(1, $post["first name"]);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $conn = null;

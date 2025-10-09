@@ -21,6 +21,10 @@ require_once "assets/topbar.php"; // presenting header
 require_once "assets/nav.php";// presenting navigation bar
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
+if (!isset($_SESSION["user"])){// checks if a user is logged in
+    $_SESSION["usermessage"] = "error: you are not logged in"; // prints message for user
+    header("Location: login.php");// sends user back to main
+    exit;}//stops further execution
 echo "<br>";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
