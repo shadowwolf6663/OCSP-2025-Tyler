@@ -28,10 +28,28 @@ if (!isset($_SESSION["user"])) {// checks if a user is logged in to reduce attac
 }
 elseif ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
-        new_console(dbconnect_insert(), $_POST);
-        $_SESSION["usermessage"]="SUCCESS: Patient created!";
-        auditor(dbconnect_insert(),$_SESSION["patient_id"],"reg","created new patient: ".getnewpatientid(dbconnect_select(),$_POST["patient_first"]));
-        echo user_message();
+        $_SESSION["strength"] = 0; // default value
+        $_SESSION["password"] = $_POST["password"]; // setting a session value from inputs
+        echo num_check(); // calls function and echos value returned to screen
+        echo len_check(); // calls function and echos value returned to screen
+        echo lower_check(); // calls function and echos value returned to screen
+        echo upper_check(); // calls function and echos value returned to screen
+        echo special_check(); // calls function and echos value returned to screen
+        echo first_special_check(); // calls function and echos value returned to screen
+        echo last_special_check(); // calls function and echos value returned to screen
+        echo common_check(); // calls function and echos value returned to screen
+        echo first_num_check(); // calls function and echos value returned to screen
+        echo strength_check(); // calls function and echos value returned to screen
+        if ($_SESSION["strength"] >= 7){
+            new_console(dbconnect_insert(), $_POST);
+            $_SESSION["usermessage"]="SUCCESS: Patient created!";
+            auditor(dbconnect_insert(),$_SESSION["patient_id"],"reg","created new patient: ".getnewpatientid(dbconnect_select(),$_POST["patient_first"]));
+            echo user_message();
+        }else{
+            $_SESSION["usermessage"]="Failed: password must be a strength of at least 7";
+            echo user_message();
+        }
+        unset($_SESSION["strength"]); // unsets variable
 
     } catch (Exception $e){
 

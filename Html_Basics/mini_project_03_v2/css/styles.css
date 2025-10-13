@@ -93,5 +93,24 @@ input{
     border-radius: 50px;
 }
 
+#good{
+
+    color: green; /* setting colour of text */
+
+
+}
+
+#medium{
+
+    color:yellow; /* setting colour of text */
+
+}
+
+#bad{
+
+    color: red; /* setting colour of text */
+
+}
+
 
 
