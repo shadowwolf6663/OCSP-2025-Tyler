@@ -69,7 +69,7 @@ foreach ($doctor as $staff){
     }else if ($staff['role']="nur"){
         $role='nurse';
     }
-    echo "<option name='doctorid' value =".$staff['doctorid'].">".$role." ".$staff['staff_first']."room ".$staff['room']. "</option>";
+    echo "<option  value =".$staff['doctorid'].">".$role." ".$staff['staff_first']."room ".$staff['room']. "</option>";
 
 }
 echo "</select>";

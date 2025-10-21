@@ -1,12 +1,13 @@
 <?php
 
 function commit_booking($conn,$epoch){
-    $sql="INSERT INTO bookings (patientid,doctorid,dateofbooking,completed) VALUES (?,?,?,?))";
+    $sql="INSERT INTO bookings (patientid,doctorid,dateofbooking,completed) VALUES (?,?,?,?)";
     $stmt=$conn->prepare($sql);
+    $bool="False";
     $stmt->bindparam(1,$_SESSION['patient_id']);
-    $stmt->bindparam(2,$_POST['doctorid']);
+    $stmt->bindparam(2,$_POST['staff']);
     $stmt->bindparam(3,$epoch);
-    $stmt->bindparam(4,"False");
+    $stmt->bindparam(4,$bool);
     $stmt->execute();
     $conn=null;
     return True;
