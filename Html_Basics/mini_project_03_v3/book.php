@@ -34,8 +34,14 @@ elseif ($_SERVER["REQUEST_METHOD"] === "POST") {// checks request method
         echo $epoch." seconds";
         echo "<br>";
         echo "current: ".time()." seconds";
-             $_SESSION["usermessage"] = "created booking";// assigning message
-             book(dbconnect_insert(),$_POST);
+        if(commit_booking(dbconnect_insert(), $epoch)){
+            $_SESSION["usermessage"] = "created booking";// assigning message
+            auditor(dbconnect_insert(),$_SESSION['patient_id'],"bok","created new booking");
+            header("Location: bookings.php");
+            exit;
+        }else{
+            $_SESSION["usermessage"] = "failed to create booking";// assigning message
+        }
              auditor(dbconnect_insert(),$_SESSION['patient_id'],"bok","created new booking");
 
         echo user_message();// echo message to screen
@@ -63,7 +69,7 @@ foreach ($doctor as $staff){
     }else if ($staff['role']="nur"){
         $role='nurse';
     }
-    echo "<option value =".$staff['doctorid'].">".$role." ".$staff['staff_first']."room ".$staff['room']. "</option>";
+    echo "<option name='doctorid' value =".$staff['doctorid'].">".$role." ".$staff['staff_first']."room ".$staff['room']. "</option>";
 
 }
 echo "</select>";

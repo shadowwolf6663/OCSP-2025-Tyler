@@ -1,5 +1,18 @@
 <?php
 
+function commit_booking($conn,$epoch){
+    $sql="INSERT INTO bookings (patientid,doctorid,dateofbooking,completed) VALUES (?,?,?,?))";
+    $stmt=$conn->prepare($sql);
+    $stmt->bindparam(1,$_SESSION['patient_id']);
+    $stmt->bindparam(2,$_POST['doctorid']);
+    $stmt->bindparam(3,$epoch);
+    $stmt->bindparam(4,"False");
+    $stmt->execute();
+    $conn=null;
+    return True;
+
+}
+
 function staff_getter($conn){
     $sql = "SELECT * FROM doctor WHERE role != ? order by role desc";
     $stmt = $conn->prepare($sql);
