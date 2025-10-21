@@ -1,12 +1,16 @@
 <?php
 
-try{
+function staff_getter($conn){
+    $sql = "SELECT * FROM doctor WHERE role != ? order by role desc";
+    $stmt = $conn->prepare($sql);
+    $exclude_role="adm";
+    $stmt->bindparam(1, $exclude_role);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $conn=null;
+    return $result;
 
-    function staff_getter($conn){
-        $sql = "SELECT * FROM doctor WHERE doctor !=? order by role desc";
-        $stmt = $conn->prepare($sql);
-
-    }
+}
 
 
 
@@ -29,14 +33,7 @@ function new_console($conn, $post)
     $conn = null;
 }
 //catches all errors  and throws an error message to screen
-} catch(PDOException $e){
-    error_log($e->getMessage());
-    throw new exception($e);
-} catch(Exception $e){
-    error_log($e->getMessage());
-    throw new exception($e);
 
-}
 
 function user_check($conn, $username){
     try {

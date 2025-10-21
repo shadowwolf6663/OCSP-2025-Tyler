@@ -11,7 +11,7 @@ else {
 
     echo "<li><a href='index.php'>main</a></li>";
     echo "<li><a href='login.php'>register</a></li>";
-    echo "<li><a href='register.php'>book</a></li>";
+    echo "<li><a href='book.php'>book</a></li>";
     echo "<li><a href='register_patient.php'>bookings</a></li>";
     echo "<li><a href='logout.php'>logout</a></li>";
 

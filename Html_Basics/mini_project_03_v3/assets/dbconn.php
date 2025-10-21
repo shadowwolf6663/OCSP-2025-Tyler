@@ -6,7 +6,7 @@ function dbconnect_insert()
     // very unsecure shouldn't be stored in open plain text as it poses many security issues should be stored in an external file with no connectivity or set as an environment variable in the webserver software
     $servername ="localhost"; // sets server name
     $dbusername = "doctor_booking_insert";
-    $dbpassword = "password1G";
+    $dbpassword = "Password1G";
     $dbname = "doctor_booking";
 
 
@@ -27,7 +27,7 @@ function dbconnect_select(){
     // very unsecure shouldn't be stored in open plain text as it poses many security issues should be stored in an external file with no connectivity or set as an environment variable in the webserver software
     $servername ="localhost"; // sets server name
     $dbusername = "doctor_booking_select";
-    $dbpassword = "password1G";
+    $dbpassword = "Password1G";
     $dbname = "doctor_booking";
 
 

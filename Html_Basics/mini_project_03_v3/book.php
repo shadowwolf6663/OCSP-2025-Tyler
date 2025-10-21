@@ -29,6 +29,11 @@ if (!isset($_SESSION["user"])) {// checks if a user is logged in to reduce attac
 }
 elseif ($_SERVER["REQUEST_METHOD"] === "POST") {// checks request method
     try {// trys to run this code
+        $tmp=$_POST["appt_date"]. ' '.$_POST["appt_time"];
+        $epoch = strtotime($tmp);
+        echo $epoch." seconds";
+        echo "<br>";
+        echo "current: ".time()." seconds";
              $_SESSION["usermessage"] = "created booking";// assigning message
              book(dbconnect_insert(),$_POST);
              auditor(dbconnect_insert(),$_SESSION['patient_id'],"bok","created new booking");
@@ -45,19 +50,20 @@ elseif ($_SERVER["REQUEST_METHOD"] === "POST") {// checks request method
 
 
 echo "<form method='post' action=''>";// opens a form
-$doctor=staff_getter();
-
-
-    echo "<input type= 'time' name ='date' placeholder='date of booking'>";// creates input box
+$doctor=staff_getter(dbconnect_select());
+    echo "<label for ='appt_time'>appointment time: </labelfor></label>";
+    echo "<input type= 'time' name ='appt_time'>";// creates input box
     echo "<br>";// breaks to next line
+echo "<label for ='appt_date'>appointment time: </labelfor></label>";
+echo "<input type= 'date' name ='appt_date'>";// creates input box
 echo "<select name='staff'>";
 foreach ($doctor as $staff){
-    if ($staff['role']=="doc"){
+    if ($staff['role']="doc"){
         $role='doctor';
-    }elseif ($staff['role']=="nur"){
+    }else if ($staff['role']="nur"){
         $role='nurse';
     }
-    echo "<option value=".$staff['doctorid'].">".$role."".$staff['staff_first'],"".$staff['room']. "</option>";
+    echo "<option value =".$staff['doctorid'].">".$role." ".$staff['staff_first']."room ".$staff['room']. "</option>";
 
 }
 echo "</select>";
@@ -66,7 +72,7 @@ echo "</select>";
 
 
 
-    echo "<input type= 'submit' value='register' id='submit'>";// creates input box
+    echo "<input type= 'submit' value='book appointment' id='submit'>";// creates input box
 echo "</form>";
 
 

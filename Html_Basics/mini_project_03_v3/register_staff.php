@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($_SESSION["strength"] >= 7){
             new_staff(dbconnect_insert(), $_POST);
             $_SESSION["usermessage"]="SUCCESS: staff created!";
-            staffauditor(dbconnect_insert(),getnewstaffid(dbconnect_select(),$_POST["staff_first"]),"reg","created new staff: ".getnewstaffid(dbconnect_select(),$_POST["staff_first"]));
+            //staffauditor(dbconnect_insert(),getnewstaffid(dbconnect_select(),$_POST["staff_first"]),"reg","created new staff: ".getnewstaffid(dbconnect_select(),$_POST["staff_first"]));
             echo user_message();
         }else{
             $_SESSION["usermessage"]="Failed: password must be a strength of at least 7";
