@@ -14,6 +14,27 @@ function commit_booking($conn,$epoch){
 
 }
 
+function book_update($conn,$bookid,$booktime){
+    $sql="UPDATE bookings SET doctorid=?,dateofbooking=? WHERE bookingid=?";
+    $stmt=$conn->prepare($sql);
+    $stmt->bindParam(1,$_POST["staff"]);
+    $stmt->bindParam(2,$booktime);
+    $stmt->bindParam(3,$bookid);
+    $stmt->execute();
+    $conn=null;
+    return True;
+}
+
+function book_fetch($conn,$bookid){
+    $sql="SELECT * FROM bookings WHERE bookingid=?";
+    $stmt=$conn->prepare($sql);
+    $stmt->bindparam(1,$bookid);
+    $stmt->execute();
+    $results=$stmt->fetch(PDO::FETCH_ASSOC);
+    $conn=null;
+    return $results;
+}
+
 function cancel_booking($conn,$bookid){
     $sql="DELETE FROM bookings WHERE bookingid=?";
     $stmt=$conn->prepare($sql);

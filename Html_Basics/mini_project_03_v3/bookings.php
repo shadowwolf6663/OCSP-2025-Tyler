@@ -40,6 +40,17 @@ if (!isset($_SESSION["user"])) {// checks if a user is logged in to reduce attac
         }catch(Exception $e){
             echo "Error: " . $e->getMessage();
         }
+    }elseif(isset($_POST["bookchange"])){
+        try{
+            $booking=book_fetch(dbconnect_select(),$_POST["bookingid"]);
+            if ($booking){
+                $_SESSION["bookingid"]=$_POST["bookingid"];
+                header("location: book_change.php");
+                exit;
+            }
+        }catch (PDOException $e){
+            echo "Error: " . $e->getMessage();
+        }
     }
 }
 else  {// checks request method
