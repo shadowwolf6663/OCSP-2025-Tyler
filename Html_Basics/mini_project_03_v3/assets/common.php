@@ -14,6 +14,25 @@ function commit_booking($conn,$epoch){
 
 }
 
+function cancel_booking($conn,$bookid){
+    $sql="DELETE FROM bookings WHERE bookingid=?";
+    $stmt=$conn->prepare($sql);
+    $stmt->bindparam(1,$bookid);
+    $stmt->execute();
+    $conn=null;
+    return True;
+}
+
+function booking_getter($conn){
+    $sql = "SELECT b.bookingid,b.dateofbooking,b.completed,d.role,d.doctor_name,d.room,b.patientid FROM bookings b JOIN doctor d on b.doctorid=d.doctorid where b.patientid=? order by b.dateofbooking ASC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindparam(1,$_SESSION['patient_id']);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $conn=null;
+    return $result;
+}
+
 function staff_getter($conn){
     $sql = "SELECT * FROM doctor WHERE role != ? order by role desc";
     $stmt = $conn->prepare($sql);

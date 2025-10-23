@@ -111,6 +111,18 @@ input{
     color: red; /* setting colour of text */
 
 }
+table {
+    border-collapse: collapse;
+    padding: 8px;
+    justify-content: center;
+    display: flex;
+    margin:auto;
+    width:auto;
+}
+td{
+    border: 2px solid black;
+    padding:6px;
+}
 
 
 
