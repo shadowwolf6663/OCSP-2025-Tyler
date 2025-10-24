@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 23, 2025 at 02:11 PM
+-- Generation Time: Oct 24, 2025 at 12:12 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.26
 
@@ -32,7 +32,7 @@ CREATE TABLE `audit` (
   `patientid` int NOT NULL,
   `code` text COLLATE utf8mb4_general_ci NOT NULL,
   `longdesc` text COLLATE utf8mb4_general_ci NOT NULL,
-  `date` date NOT NULL
+  `date` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -40,24 +40,32 @@ CREATE TABLE `audit` (
 --
 
 INSERT INTO `audit` (`auditid`, `patientid`, `code`, `longdesc`, `date`) VALUES
-(1, 1, 'log', 'user has logged out', '2025-10-21'),
-(2, 1, 'log', 'user has succesfully logged in', '2025-10-21'),
-(3, 1, 'log', 'user has logged out', '2025-10-21'),
-(4, 1, 'log', 'user has succesfully logged in', '2025-10-21'),
-(5, 1, 'log', 'user has succesfully logged in', '2025-10-21'),
-(6, 1, 'log', 'user has succesfully logged in', '2025-10-21'),
-(7, 1, 'log', 'user has succesfully logged in', '2025-10-21'),
-(8, 1, 'bok', 'created new booking', '2025-10-21'),
-(9, 1, 'bok', 'created new booking', '2025-10-23'),
-(10, 1, 'bok', 'created new booking', '2025-10-23'),
-(11, 1, 'log', 'user has succesfully logged in', '2025-10-23'),
-(12, 1, 'bok', 'created new booking', '2025-10-23'),
-(13, 1, 'bok', 'created new booking', '2025-10-23'),
-(14, 1, 'bok', 'created new booking', '2025-10-23'),
-(15, 1, 'bok', 'created new booking', '2025-10-23'),
-(16, 1, 'bok', 'created new booking', '2025-10-23'),
-(17, 1, 'bok', 'created new booking', '2025-10-23'),
-(18, 1, 'bok', 'created new booking', '2025-10-23');
+(27, 1, 'log', 'user has succesfully logged in', 20251024),
+(28, 1, 'log', 'user has succesfully logged in', 1761296204),
+(29, 1, 'log', 'user has logged out', 1761296219),
+(30, 1, 'log', 'user has succesfully logged in', 1761296224),
+(31, 1, 'lgo', 'user has logged out', 1761296387),
+(32, 1, 'log', 'user has succesfully logged in', 1761296391),
+(33, 1, 'lgo', 'user has logged out', 1761296427),
+(34, 1, 'log', 'user has succesfully logged in', 1761296431),
+(35, 1, 'reg', 'created new patient: 2', 1761296798),
+(36, 1, 'bok', 'created new booking', 1761296824),
+(37, 1, 'lgo', 'user has logged out', 1761296843),
+(38, 1, 'log', 'user has succesfully logged in', 1761300297),
+(39, 1, 'alt', 'altered the booking', 1761300406),
+(40, 1, 'reg', 'created new patient: 2', 1761300672),
+(41, 1, 'lgo', 'user has logged out', 1761300674),
+(42, 2, 'log', 'user has succesfully logged in', 1761300684),
+(43, 2, 'alt', 'altered the booking', 1761300699),
+(44, 2, 'lgo', 'user has logged out', 1761300775),
+(45, 2, 'log', 'user has succesfully logged in', 1761300780),
+(46, 2, 'lgo', 'user has logged out', 1761307510),
+(47, 2, 'log', 'user has succesfully logged in', 1761307685),
+(48, 2, 'lgo', 'user has logged out', 1761307692),
+(49, 2, 'log', 'user has succesfully logged in', 1761307697),
+(50, 2, 'lgo', 'user has logged out', 1761307711),
+(51, 2, 'log', 'user has succesfully logged in', 1761307753),
+(52, 2, 'lgo', 'user has logged out', 1761307755);
 
 -- --------------------------------------------------------
 
@@ -72,15 +80,6 @@ CREATE TABLE `bookings` (
   `dateofbooking` int NOT NULL,
   `completed` text COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `bookings`
---
-
-INSERT INTO `bookings` (`bookingid`, `patientid`, `doctorid`, `dateofbooking`, `completed`) VALUES
-(2, 1, 11, 1761375300, 'False'),
-(4, 1, 2, 1759532880, 'False'),
-(5, 1, 11, 1760488080, 'False');
 
 -- --------------------------------------------------------
 
@@ -101,10 +100,7 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`doctorid`, `doctor_name`, `role`, `password`, `room`) VALUES
-(1, 'doctor', 'doc', '$2y$10$ESuEVal5FLnzxT63JKB48uXC1Q5qQ4KhaVyPPWygGxvX8dFyJyiVO', 2),
-(2, 'doctor', 'doc', '$2y$10$bu5ex1xOBr7glGJvkrcyue1sit2VsUi6zLTj69TmjOjs1EARcqt0S', 2),
-(3, 'doctor', 'doc', '$2y$10$ysn8LiYTi1FEeJQSQ7a1Muwr6Pb6EDMONnD7ghLMfLqZWNLb4AKe6', 2),
-(11, 'new', 'nur', '$2y$10$ojapOwrG5kmqpcGqcSI8pe5/ebbPaw9rnuLOWUbBraWLOVBXk.6Qe', 5);
+(14, 'new', 'nur', '$2y$10$rWK92JPATNjULe2NVaBf9OYilu6vOG46nu2sDyTYt4FJr5.qwpLnq', 5);
 
 -- --------------------------------------------------------
 
@@ -127,7 +123,33 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`patientid`, `first_name`, `middle_name`, `second_name`, `gender`, `age`, `password`) VALUES
-(1, 'a', 'b', 'c', 'm', 12, '$2y$10$A46Tfj4qh1ux0ZBEOOAzyuajqqKWrC4DHJzeIEfXnjnpr6R0vnUtm');
+(1, 'a', 'b', 'c', 'm', 12, 'bob'),
+(2, 'new', 'this ', 'guy', 'm', 13, '$2y$10$Nmm7I5soNJi7bkocaZtfouw5vzje6pVcinlY5TJN6AQmJIlpufDc.'),
+(3, 'new', 'this ', 'guy', 'm', 13, '$2y$10$DwlXF7Qr5kEj21ieEdJ94OK9Lp4ClPsLFmSrol9P5RtFXotfRjmuW');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staffaudit`
+--
+
+CREATE TABLE `staffaudit` (
+  `auditid` int NOT NULL,
+  `doctorid` int NOT NULL,
+  `code` text NOT NULL,
+  `longdesc` text NOT NULL,
+  `date` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `staffaudit`
+--
+
+INSERT INTO `staffaudit` (`auditid`, `doctorid`, `code`, `longdesc`, `date`) VALUES
+(10, 14, 'reg', 'created new staff: ', 1761307576),
+(11, 14, 'log', 'user has succesfully logged in', 1761307590),
+(12, 14, 'lgo', 'user has logged out', 1761307643),
+(13, 14, 'log', 'user has succesfully logged in', 1761307815);
 
 --
 -- Indexes for dumped tables
@@ -161,6 +183,13 @@ ALTER TABLE `patient`
   ADD PRIMARY KEY (`patientid`);
 
 --
+-- Indexes for table `staffaudit`
+--
+ALTER TABLE `staffaudit`
+  ADD PRIMARY KEY (`auditid`),
+  ADD KEY `doctorid` (`doctorid`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -168,25 +197,31 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT for table `audit`
 --
 ALTER TABLE `audit`
-  MODIFY `auditid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `auditid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `bookingid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `bookingid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `doctorid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `doctorid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `patientid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `patientid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `staffaudit`
+--
+ALTER TABLE `staffaudit`
+  MODIFY `auditid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -204,6 +239,12 @@ ALTER TABLE `audit`
 ALTER TABLE `bookings`
   ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`doctorid`) REFERENCES `doctor` (`doctorid`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`patientid`) REFERENCES `patient` (`patientid`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `staffaudit`
+--
+ALTER TABLE `staffaudit`
+  ADD CONSTRAINT `staffaudit_ibfk_1` FOREIGN KEY (`doctorid`) REFERENCES `doctor` (`doctorid`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -18,6 +18,8 @@ if (isset($_SESSION["user"])) {// checks if a user is logged in to reduce attack
     echo "<li><a href='staff_bookings.php'>bookings</a></li>";
     echo "<li><a href='register_staff.php'>register</a></li>";
     echo "<li><a href='view_audit_staff.php'>view audit log</a></li>";
+    echo "<li><a href='change_password_staff.php'>change password</a></li>";
+    echo "<li><a href='change_details_staff.php'>change details</a></li>";
     echo "<li><a href='staff_logout.php'>logout</a></li>";
 }
 else {

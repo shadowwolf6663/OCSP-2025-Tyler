@@ -111,12 +111,48 @@ function getpassword($conn){
     }
 }
 
+function getpassword_staff($conn){
+    try{
+        $sql = "SELECT password FROM doctor WHERE doctorid=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindparam(1, $_SESSION['doctor_id']);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $conn = null;
+        if($result){
+            return $result;
+        }else{
+            $_SESSION["error"] = "user not found";
+            header("Location: login.php");
+            exit;
+        }
+    }catch(PDOException $e){
+        error_log($e->getMessage());// logs error
+        throw new exception($e);
+    } catch(Exception $e){
+        error_log($e->getMessage());// logs error
+        throw new exception($e);
+
+    }
+}
+
 function password_update($conn,$patientid){
     $sql="UPDATE patient SET password=? WHERE patientid=?";
     $stmt=$conn->prepare($sql);
     $psw = password_hash($_POST["new_psw"], PASSWORD_DEFAULT);
     $stmt->bindParam(1,$psw);
     $stmt->bindParam(2,$patientid);
+    $stmt->execute();
+    $conn=null;
+    return True;
+}
+
+function password_update_staff($conn,$doctorid){
+    $sql="UPDATE doctor SET password=? WHERE doctorid=?";
+    $stmt=$conn->prepare($sql);
+    $psw = password_hash($_POST["new_psw"], PASSWORD_DEFAULT);
+    $stmt->bindParam(1,$psw);
+    $stmt->bindParam(2,$doctorid);
     $stmt->execute();
     $conn=null;
     return True;

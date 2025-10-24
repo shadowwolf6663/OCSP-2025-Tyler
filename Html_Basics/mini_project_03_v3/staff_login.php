@@ -28,6 +28,7 @@ echo "<html>";  // opening html
                 exit;}//stops further execution
             elseif($_SERVER['REQUEST_METHOD'] === "POST"){// if other condition isnt met and method = post
                 $usr=staff_login(dbconnect_select());
+                echo $usr["password"];
                 if ($usr&& password_verify($_POST["password"],$usr["password"])){
                     $_SESSION["staff"] = true;
                     $_SESSION["doctor_id"] = $usr["doctorid"];
@@ -38,7 +39,7 @@ echo "<html>";  // opening html
 
                 }else{
                     $_SESSION["usermessage"] = "login failed";
-                    header("Location: login.php");
+                    header("Location: staff_login.php");
                     exit;
                 }
                 }

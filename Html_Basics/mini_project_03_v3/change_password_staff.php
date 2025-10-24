@@ -29,12 +29,18 @@ if (!isset($_SESSION["user"]  )and(!isset($_SESSION["staff"]) )) {// checks if a
 }
 elseif ($_SERVER["REQUEST_METHOD"] === "POST") {// checks request method
     try {// trys to run this code
-        $usr = getpassword(dbconnect_select());
+        $usr = getpassword_staff(dbconnect_select());
         if (($usr && password_verify($_POST["current_psw"], $usr["password"])) and ($_POST["new_psw"] == $_POST["new_psw_verify"])) {
-            if (password_update(dbconnect_update(), $_SESSION['patient_id'])) {
+            if (password_update_staff(dbconnect_update(), $_SESSION['doctor_id'])) {
                 $_SESSION["usermessage"] = "changed password";// assigning message
                 if (isset($_SESSION["user"])) {
+                    auditor(dbconnect_insert(), $_SESSION['patient_id'], "alt", "altered the booking");
+                    header("Location: bookings.php");
+                    exit;
+                } else {
                     staffauditor(dbconnect_insert(), $_SESSION['doctor_id'], "alt", "altered the booking");
+                    header("Location: staff_bookings.php");
+                    exit;
                 }
             } else {
                 $_SESSION["usermessage"] = "failed to create booking";// assigning message

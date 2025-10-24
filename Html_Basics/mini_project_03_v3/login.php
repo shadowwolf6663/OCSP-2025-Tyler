@@ -28,6 +28,7 @@ echo "<html>";  // opening html
                 exit;}//stops further execution
             elseif($_SERVER['REQUEST_METHOD'] === "POST"){// if other condition isnt met and method = post
                 $usr=login(dbconnect_select(),$_POST);
+                echo $usr["password"];
                 if ($usr&& password_verify($_POST["password"],$usr["password"])){
                     $_SESSION["user"] = true;
                     $_SESSION["patient_id"] = $usr["patientid"];
