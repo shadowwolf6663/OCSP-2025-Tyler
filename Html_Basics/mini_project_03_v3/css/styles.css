@@ -28,7 +28,7 @@ nav ul {
     list-style: none; /* Remove default bullet points */
     display: flex; /* Arrange list items in a row */
     justify-content: center; /* Center items horizontally */
-    width: 30%; /* Span full width to allow proper centering */
+    width: 40%; /* Span full width to allow proper centering */
     margin: auto;
     text-decoration: none;
     font-weight: bold;

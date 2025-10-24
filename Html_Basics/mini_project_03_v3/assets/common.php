@@ -14,12 +14,109 @@ function commit_booking($conn,$epoch){
 
 }
 
+function staffauditor($conn, $doctorid,$code,$long){
+    $sql = "INSERT INTO staffaudit(date,doctorid,code,longdesc) VALUES(?,?,?,?)";
+    $stmt = $conn->prepare($sql);
+    $date = time();
+    $stmt->bindparam(1, $date);
+    $stmt->bindparam(2, $doctorid);
+    $stmt->bindparam(3, $code);
+    $stmt->bindparam(4, $long);
+    $stmt->execute();
+    $conn = null;
+    return true;
+}
+
+function getnewstaffid($conn,$first_name){
+    $sql = "SELECT doctorid FROM doctor WHERE doctor_name=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindparam(1, $first_name);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $conn = null;
+    return $result["doctorid"];
+}
+
+function new_staff($conn, $post)
+{
+
+    $sql = "INSERT INTO doctor(doctor_name,role,room,password) VALUES(?,?,?,?)";// doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepare to sql
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
+    $hpsw = password_hash($post['password'], PASSWORD_DEFAULT);
+    $stmt->bindparam(1, $post['staff_first']);
+    $stmt->bindparam(2, $post['role']);
+    $stmt->bindparam(3, $post['room']);
+    $stmt->bindparam(4, $hpsw);
+    $stmt->execute(); // runs the insert query
+
+    $conn = null;
+}
+
+
+function staff_audit_getter($conn){
+    $sql = "SELECT * FROM staffaudit WHERE doctorid=? order by auditid ASC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindparam(1, $_SESSION['doctor_id']);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $conn=null;
+    return $result;
+}
+
+function audit_getter($conn){
+    $sql = "SELECT * FROM audit WHERE patientid=? order by auditid ASC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindparam(1, $_SESSION['patient_id']);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $conn=null;
+    return $result;
+}
+
 function book_update($conn,$bookid,$booktime){
     $sql="UPDATE bookings SET doctorid=?,dateofbooking=? WHERE bookingid=?";
     $stmt=$conn->prepare($sql);
     $stmt->bindParam(1,$_POST["staff"]);
     $stmt->bindParam(2,$booktime);
     $stmt->bindParam(3,$bookid);
+    $stmt->execute();
+    $conn=null;
+    return True;
+}
+
+function getpassword($conn){
+    try{
+        $sql = "SELECT password FROM patient WHERE patientid=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindparam(1, $_SESSION['patient_id']);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $conn = null;
+        if($result){
+            return $result;
+        }else{
+            $_SESSION["error"] = "user not found";
+            header("Location: login.php");
+            exit;
+        }
+    }catch(PDOException $e){
+        error_log($e->getMessage());// logs error
+        throw new exception($e);
+    } catch(Exception $e){
+        error_log($e->getMessage());// logs error
+        throw new exception($e);
+
+    }
+}
+
+function password_update($conn,$patientid){
+    $sql="UPDATE patient SET password=? WHERE patientid=?";
+    $stmt=$conn->prepare($sql);
+    $psw = password_hash($_POST["new_psw"], PASSWORD_DEFAULT);
+    $stmt->bindParam(1,$psw);
+    $stmt->bindParam(2,$patientid);
     $stmt->execute();
     $conn=null;
     return True;
@@ -44,10 +141,45 @@ function cancel_booking($conn,$bookid){
     return True;
 }
 
+function staff_login($conn){
+    try{
+        $sql = "SELECT * FROM doctor WHERE doctor_name=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindparam(1, $_POST["first_name"]);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $conn = null;
+        if($result){
+            return $result;
+        }else{
+            $_SESSION["error"] = "user not found";
+            header("Location: login.php");
+            exit;
+        }
+    }catch(PDOException $e){
+        error_log($e->getMessage());// logs error
+        throw new exception($e);
+    } catch(Exception $e){
+        error_log($e->getMessage());// logs error
+        throw new exception($e);
+
+    }
+}
+
 function booking_getter($conn){
     $sql = "SELECT b.bookingid,b.dateofbooking,b.completed,d.role,d.doctor_name,d.room,b.patientid FROM bookings b JOIN doctor d on b.doctorid=d.doctorid where b.patientid=? order by b.dateofbooking ASC";
     $stmt = $conn->prepare($sql);
     $stmt->bindparam(1,$_SESSION['patient_id']);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $conn=null;
+    return $result;
+}
+
+function booking_getter_staff($conn){
+    $sql = "SELECT b.bookingid,b.dateofbooking,b.completed,d.role,d.doctor_name,d.room,b.patientid FROM bookings b JOIN doctor d on b.doctorid=d.doctorid where b.doctorid=? order by b.dateofbooking ASC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindparam(1,$_SESSION['doctor_id']);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $conn=null;
@@ -148,7 +280,7 @@ function reg_user($conn, $post){//creates function
 function auditor($conn, $patientid,$code,$long){
     $sql = "INSERT INTO audit(date,patientid,code,longdesc) VALUES(?,?,?,?)";
     $stmt = $conn->prepare($sql);
-    $date = date("Y-m-d");
+    $date = time();
     $stmt->bindparam(1, $date);
     $stmt->bindparam(2, $patientid);
     $stmt->bindparam(3, $code);

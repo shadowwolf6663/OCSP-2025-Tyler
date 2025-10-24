@@ -2,7 +2,7 @@
 session_start();
 
 require_once "assets/dbconn.php";
-require_once "assets/staffcommon.php";
+require_once "assets/common.php";
 
 echo "<!DOCTYPE html>";  // desired tag to declare what type of page it is
 
@@ -18,6 +18,8 @@ echo "<body>"; // opening body
 
 echo "<div class ='container'>"; // class container to give all items a default to reduce need for styling later
 require_once "assets/topbar.php"; // presenting header
+require_once "assets/nav.php";// presenting navigation bar
+
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
 
@@ -38,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($_SESSION["strength"] >= 7){
             new_staff(dbconnect_insert(), $_POST);
             $_SESSION["usermessage"]="SUCCESS: staff created!";
-            //staffauditor(dbconnect_insert(),getnewstaffid(dbconnect_select(),$_POST["staff_first"]),"reg","created new staff: ".getnewstaffid(dbconnect_select(),$_POST["staff_first"]));
+            staffauditor(dbconnect_insert(),getnewstaffid(dbconnect_select(),$_POST["staff_first"]),"reg","created new staff: ");
             echo user_message();
         }else{
             $_SESSION["usermessage"]="Failed: password must be a strength of at least 7";

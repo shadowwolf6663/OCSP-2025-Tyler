@@ -22,7 +22,7 @@ require_once "assets/nav.php";// presenting navigation bar
 
 echo "<div class ='content'>"; // class context to give all items that give information an overall css to reduce need for styling later and standardise formatting
 
-if (!isset($_SESSION["user"])) {// checks if a user is logged in to reduce attack vectors
+if (!isset($_SESSION["user"]  )and(!isset($_SESSION["staff"]) )) {// checks if a user is logged in to reduce attack vectors
     $_SESSION["usermessage"] = "You must be logged in to access this page!";
     header("Location: index.php");
     exit;
@@ -36,9 +36,15 @@ elseif ($_SERVER["REQUEST_METHOD"] === "POST") {// checks request method
         echo "current: ".time()." seconds";
         if(book_update(dbconnect_update(),$_SESSION['bookingid'], $epoch)){
             $_SESSION["usermessage"] = "created booking";// assigning message
-            auditor(dbconnect_insert(),$_SESSION['patient_id'],"bok","created new booking");
-            header("Location: bookings.php");
-            exit;
+            if (isset($_SESSION["user"])){
+                auditor(dbconnect_insert(),$_SESSION['patient_id'],"alt","altered the booking");
+                header("Location: bookings.php");
+                exit;
+            }else{
+                staffauditor(dbconnect_insert(),$_SESSION['doctor_id'],"alt","altered the booking");
+                header("Location: staff_bookings.php");
+                exit;
+            }
         }else{
             $_SESSION["usermessage"] = "failed to create booking";// assigning message
         }
@@ -64,23 +70,26 @@ $book_date=date('Y-m-d',$book["dateofbooking"]);
     echo "<br>";// breaks to next line
 echo "<label for ='appt_date'>appointment time: </labelfor></label>";
 echo "<input type= 'date' name ='appt_date' value = '".$book_date. "'>";// creates input box
-echo "<select name='staff'>";
-foreach ($doctor as $staff){
-    if ($staff['role']="doc"){
-        $role='doctor';
-    }else if ($staff['role']="nur"){
-        $role='nurse';
-    }
-    if($book['doctorid']==$staff['doctorid']){
-        $selected='selected';
-    }else{
-        $selected='';
-    }
-    echo "<option  value =".$staff['doctorid'].">".$selected." ".$role." ".$staff['staff_first']."room ".$staff['room']. "</option>";
+if (isset($_SESSION["user"])) {
+    echo "<select name='staff'>";
+    foreach ($doctor as $staff) {
+        if ($staff['role'] = "doc") {
+            $role = 'doctor';
+        } else if ($staff['role'] = "nur") {
+            $role = 'nurse';
+        }
+        if ($book['doctorid'] == $staff['doctorid']) {
+            $selected = 'selected';
+        } else {
+            $selected = '';
+        }
+        echo "<option  value =" . $staff['doctorid'] . ">" . $selected . " " . $role . " " . $staff['staff_first'] . "room " . $staff['room'] . "</option>";
 
+    }
+    echo "</select>";
+}else{
+    echo "<input type='hidden' name='staff' value='".$_SESSION['doctor_id']."'>";
 }
-echo "</select>";
-
 
 
 
