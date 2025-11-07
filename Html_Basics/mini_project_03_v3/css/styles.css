@@ -11,28 +11,26 @@
 
 .navi{
 
-    margin-top:30px;
+    margin-top:30px;  /* gives van bar space between topbar */
 
 }
 
 nav ul li a{
 
-    text-decoration: none;
-    color: #000;
+    text-decoration: none;  /* removes underline from html links */
+    color: #000;  /* sets color of text */
 
 }
 
 nav ul {
 
-    border-radius: 50px;
+    border-radius: 50px;  /* makes corners rounded on nav bar */
     list-style: none; /* Remove default bullet points */
     display: flex; /* Arrange list items in a row */
     justify-content: center; /* Center items horizontally */
     width: 40%; /* Span full width to allow proper centering */
-    margin: auto;
-    text-decoration: none;
-    font-weight: bold;
-    color: #3DFFEF;
+    margin: auto;  /* automatically sets margin*/
+    font-weight: bold;  /* sets text to bold */
     background-color: #3DFFEF; /* Optional: background color */
     padding: 10px 0; /* Optional: spacing */
 
@@ -41,6 +39,7 @@ nav ul {
 nav li{/* creates space around li items in nav bar */
 
     padding:5px 20px 5px 20px;/* top right bottom left padding*/
+
 }
 
 nav li:hover {/*sets up roll over for the nav bar */

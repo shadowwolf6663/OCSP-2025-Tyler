@@ -1,47 +1,60 @@
 <?php
 
-function commit_booking($conn,$epoch){
-    $sql="INSERT INTO bookings (patientid,doctorid,dateofbooking,completed) VALUES (?,?,?,?)";
-    $stmt=$conn->prepare($sql);
-    $bool="False";
+function commit_booking($conn,$epoch){  // declaring function
+
+    $sql="INSERT INTO bookings (patientid,doctorid,dateofbooking,completed) VALUES (?,?,?,?)";  // doing a prepared statement by sending values separately, bound separately
+    $stmt=$conn->prepare($sql);  // prepares sql statement with connection to database
+    $bool="False";  // sets a value for the sql query
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1,$_SESSION['patient_id']);
     $stmt->bindparam(2,$_POST['staff']);
     $stmt->bindparam(3,$epoch);
     $stmt->bindparam(4,$bool);
-    $stmt->execute();
-    $conn=null;
-    return True;
+    $stmt->execute();  // executes sql query
+
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return True;  // returns value
 
 }
 
-function staffauditor($conn, $doctorid,$code,$long){
-    $sql = "INSERT INTO staffaudit(date,doctorid,code,longdesc) VALUES(?,?,?,?)";
-    $stmt = $conn->prepare($sql);
-    $date = time();
+function staffauditor($conn, $doctorid,$code,$long){  // declaring function
+    $sql = "INSERT INTO staffaudit(date,doctorid,code,longdesc) VALUES(?,?,?,?)";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+    $date = time();  // sets a value for the sql query
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1, $date);
     $stmt->bindparam(2, $doctorid);
     $stmt->bindparam(3, $code);
     $stmt->bindparam(4, $long);
-    $stmt->execute();
-    $conn = null;
-    return true;
+    $stmt->execute();  // executes sql query
+
+    $conn = null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return true;  // returns value
+
 }
 
-function getnewstaffid($conn,$first_name){
-    $sql = "SELECT doctorid FROM doctor WHERE doctor_name=?";
-    $stmt = $conn->prepare($sql);
+function getnewstaffid($conn,$first_name){  // declaring function
+
+    $sql = "SELECT doctorid FROM doctor WHERE doctor_name=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1, $first_name);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $conn = null;
-    return $result["doctorid"];
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn = null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return $result["doctorid"];  // returns value
+
 }
 
 function new_staff($conn, $post)
-{
+{  // declaring function
 
-    $sql = "INSERT INTO doctor(doctor_name,role,room,password) VALUES(?,?,?,?)";// doing a prepared statement by sending values separately, bound separately
-    $stmt = $conn->prepare($sql);  // prepare to sql
+    $sql = "INSERT INTO doctor(doctor_name,role,room,password) VALUES(?,?,?,?)";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
 
     // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $hpsw = password_hash($post['password'], PASSWORD_DEFAULT);
@@ -51,196 +64,243 @@ function new_staff($conn, $post)
     $stmt->bindparam(4, $hpsw);
     $stmt->execute(); // runs the insert query
 
-    $conn = null;
+    $conn = null;  // voids connection to db for security reason since it no longer needs to be accessed
+
 }
 
+function staff_audit_getter($conn){  // declaring function
 
-function staff_audit_getter($conn){
-    $sql = "SELECT * FROM staffaudit WHERE doctorid=? order by auditid ASC";
-    $stmt = $conn->prepare($sql);
+    $sql = "SELECT * FROM staffaudit WHERE doctorid=? order by auditid ASC";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1, $_SESSION['doctor_id']);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $conn=null;
-    return $result;
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return $result;  // returns value
+
 }
 
-function audit_getter($conn){
-    $sql = "SELECT * FROM audit WHERE patientid=? order by auditid ASC";
-    $stmt = $conn->prepare($sql);
+function audit_getter($conn){  // declaring function
+
+    $sql = "SELECT * FROM audit WHERE patientid=? order by auditid ASC";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1, $_SESSION['patient_id']);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $conn=null;
-    return $result;
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return $result;  // returns value
+
 }
 
-function book_update($conn,$bookid,$booktime){
-    $sql="UPDATE bookings SET doctorid=?,dateofbooking=? WHERE bookingid=?";
-    $stmt=$conn->prepare($sql);
+function book_update($conn,$bookid,$booktime){  // declaring function
+
+    $sql="UPDATE bookings SET doctorid=?,dateofbooking=? WHERE bookingid=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt=$conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindParam(1,$_POST["staff"]);
     $stmt->bindParam(2,$booktime);
     $stmt->bindParam(3,$bookid);
-    $stmt->execute();
-    $conn=null;
-    return True;
+    $stmt->execute();  // executes sql query
+
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return True;  // returns value
+
 }
 
-function getpassword($conn){
-    try{
-        $sql = "SELECT password FROM patient WHERE patientid=?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindparam(1, $_SESSION['patient_id']);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $conn = null;
-        if($result){
-            return $result;
-        }else{
-            $_SESSION["error"] = "user not found";
-            header("Location: login.php");
-            exit;
-        }
-    }catch(PDOException $e){
-        error_log($e->getMessage());// logs error
-        throw new exception($e);
-    } catch(Exception $e){
-        error_log($e->getMessage());// logs error
-        throw new exception($e);
+function getpassword($conn){  // declaring function
+
+    $sql = "SELECT password FROM patient WHERE patientid=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
+    $stmt->bindparam(1, $_SESSION['patient_id']);
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn = null;  // voids connection to db for security reason since it no longer needs to be accessed
+
+    if($result){  // checks if value was fetched
+
+        return $result;  // returns value
+
+    }else{  // if other conditions aren't met
+
+        $_SESSION["error"] = "user not found";
+        header("Location: login.php");  // redirects to different page
+        exit;  // stops further execution
 
     }
 }
 
-function getpassword_staff($conn){
-    try{
-        $sql = "SELECT password FROM doctor WHERE doctorid=?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindparam(1, $_SESSION['doctor_id']);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $conn = null;
-        if($result){
-            return $result;
-        }else{
-            $_SESSION["error"] = "user not found";
-            header("Location: login.php");
-            exit;
-        }
-    }catch(PDOException $e){
-        error_log($e->getMessage());// logs error
-        throw new exception($e);
-    } catch(Exception $e){
-        error_log($e->getMessage());// logs error
-        throw new exception($e);
+function getpassword_staff($conn){  // declaring function
+
+    $sql = "SELECT password FROM doctor WHERE doctorid=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
+    $stmt->bindparam(1, $_SESSION['doctor_id']);
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn = null;  // voids connection to db for security reason since it no longer needs to be accessed
+
+    if($result){  // checks if value was returned
+
+        return $result;  // returns value
+
+    }else{  // if other conditions aren't met
+
+        $_SESSION["error"] = "staff not found";
+        header("Location: login.php");  // redirects to different page
+        exit;  // stops further execution
 
     }
 }
 
-function password_update($conn,$patientid){
-    $sql="UPDATE patient SET password=? WHERE patientid=?";
-    $stmt=$conn->prepare($sql);
+function password_update($conn,$patientid){  // declaring function
+
+    $sql="UPDATE patient SET password=? WHERE patientid=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt=$conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $psw = password_hash($_POST["new_psw"], PASSWORD_DEFAULT);
     $stmt->bindParam(1,$psw);
     $stmt->bindParam(2,$patientid);
-    $stmt->execute();
-    $conn=null;
-    return True;
+    $stmt->execute();  // executes sql query
+
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return True;  // returns value
+
 }
 
-function password_update_staff($conn,$doctorid){
-    $sql="UPDATE doctor SET password=? WHERE doctorid=?";
-    $stmt=$conn->prepare($sql);
-    $psw = password_hash($_POST["new_psw"], PASSWORD_DEFAULT);
+function password_update_staff($conn,$doctorid){  // declaring function
+
+    $sql="UPDATE doctor SET password=? WHERE doctorid=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt=$conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
+    $psw = password_hash($_POST["new_psw"], PASSWORD_DEFAULT);  // sets a value for the sql query
     $stmt->bindParam(1,$psw);
     $stmt->bindParam(2,$doctorid);
-    $stmt->execute();
-    $conn=null;
-    return True;
+    $stmt->execute();  // executes sql query
+
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return True;  // returns value
+
 }
 
-function book_fetch($conn,$bookid){
-    $sql="SELECT * FROM bookings WHERE bookingid=?";
-    $stmt=$conn->prepare($sql);
+function book_fetch($conn,$bookid){  // declaring function
+
+    $sql="SELECT * FROM bookings WHERE bookingid=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt=$conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1,$bookid);
     $stmt->execute();
-    $results=$stmt->fetch(PDO::FETCH_ASSOC);
-    $conn=null;
-    return $results;
+
+    $results=$stmt->fetch(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return $results;  // returns value
+
 }
 
-function cancel_booking($conn,$bookid){
-    $sql="DELETE FROM bookings WHERE bookingid=?";
-    $stmt=$conn->prepare($sql);
+function cancel_booking($conn,$bookid){  // declaring function
+
+    $sql="DELETE FROM bookings WHERE bookingid=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt=$conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1,$bookid);
-    $stmt->execute();
-    $conn=null;
-    return True;
+    $stmt->execute();  // executes sql query
+
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return True;  // returns value
+
 }
 
-function staff_login($conn){
-    try{
-        $sql = "SELECT * FROM doctor WHERE doctor_name=?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindparam(1, $_POST["first_name"]);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $conn = null;
-        if($result){
-            return $result;
-        }else{
-            $_SESSION["error"] = "user not found";
-            header("Location: login.php");
-            exit;
-        }
-    }catch(PDOException $e){
-        error_log($e->getMessage());// logs error
-        throw new exception($e);
-    } catch(Exception $e){
-        error_log($e->getMessage());// logs error
-        throw new exception($e);
+function staff_login($conn){  // declaring function
+
+    $sql = "SELECT * FROM doctor WHERE doctor_name=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
+    $stmt->bindparam(1, $_POST["first_name"]);
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn = null;  // voids connection to db for security reason since it no longer needs to be accessed
+
+    if($result){  // checks if a value was returned
+
+        return $result;  // returns value
+
+    }else{  // if other conditions aren't met
+
+        $_SESSION["error"] = "user not found";
+        header("Location: login.php");  // redirects to different page
+        exit;  // stops further execution
 
     }
 }
 
-function booking_getter($conn){
-    $sql = "SELECT b.bookingid,b.dateofbooking,b.completed,d.role,d.doctor_name,d.room,b.patientid FROM bookings b JOIN doctor d on b.doctorid=d.doctorid where b.patientid=? order by b.dateofbooking ASC";
-    $stmt = $conn->prepare($sql);
+function booking_getter($conn){  // declaring function
+
+    $sql = "SELECT b.bookingid,b.dateofbooking,b.completed,d.role,d.doctor_name,d.room,b.patientid FROM bookings b JOIN doctor d on b.doctorid=d.doctorid where b.patientid=? order by b.dateofbooking ASC";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1,$_SESSION['patient_id']);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $conn=null;
-    return $result;
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return $result;  // returns value
+
 }
 
-function booking_getter_staff($conn){
-    $sql = "SELECT b.bookingid,b.dateofbooking,b.completed,d.role,d.doctor_name,d.room,b.patientid FROM bookings b JOIN doctor d on b.doctorid=d.doctorid where b.doctorid=? order by b.dateofbooking ASC";
-    $stmt = $conn->prepare($sql);
+function booking_getter_staff($conn){  // declaring function
+
+    $sql = "SELECT b.bookingid,b.dateofbooking,b.completed,d.role,d.doctor_name,d.room,b.patientid FROM bookings b JOIN doctor d on b.doctorid=d.doctorid where b.doctorid=? order by b.dateofbooking ASC";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1,$_SESSION['doctor_id']);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $conn=null;
-    return $result;
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return $result;  // returns value
+
 }
 
-function staff_getter($conn){
-    $sql = "SELECT * FROM doctor WHERE role != ? order by role desc";
-    $stmt = $conn->prepare($sql);
-    $exclude_role="adm";
+function staff_getter($conn){  // declaring function
+
+    $sql = "SELECT * FROM doctor WHERE role != ? order by role desc";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+    $exclude_role="adm";  // sets a value for the sql query
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1, $exclude_role);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $conn=null;
-    return $result;
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn=null;  // voids connection to db for security reason since it no longer needs to be accessed
+    return $result;  // returns value
 
 }
-
-
 
 function new_console($conn, $post)
-{
+{  // declaring function
 
     $sql = "INSERT INTO patient(first_name,middle_name,second_name,gender,age,password) VALUES(?,?,?,?,?,?)";// doing a prepared statement by sending values separately, bound separately
-    $stmt = $conn->prepare($sql);  // prepare to sql
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
 
     // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $hpsw=password_hash($post['password'],PASSWORD_DEFAULT);
@@ -252,130 +312,132 @@ function new_console($conn, $post)
     $stmt->bindparam(6,$hpsw);
     $stmt->execute(); // runs the insert query
 
-    $conn = null;
+    $conn = null;  // voids connection to db for security reason since it no longer needs to be accessed
+
 }
-//catches all errors  and throws an error message to screen
 
+function user_check($conn, $username){  // declaring function
 
-function user_check($conn, $username){
-    try {
-        $sql = "SELECT username FROM  user WHERE username=?";// doing a prepared statement by sending values separately, bound separately
-        $stmt = $conn->prepare($sql);
-        // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
-        $stmt->bindparam(1, $username);
-        $stmt->execute(); // runs the insert query
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);//fetchs values returned by the executed sql
-        $conn = null;
-        if ($result) {// checks if a value was fetched
-            return false;//returns false
-        } else {
-            return true;//returns true
-        }
-        //catches all errors  and throws an error message to screen
-    }catch(PDOException $e){
-        error_log($e->getMessage());
-        throw new exception($e);
-    } catch(Exception $e){
-        error_log($e->getMessage());
-        throw new exception($e);
+    $sql = "SELECT username FROM  user WHERE username=?";// doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
+    $stmt->bindparam(1, $username);
+    $stmt->execute(); // runs the insert query
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);  // fetchs values returned by the executed sql
+    $conn = null;  // voids connection to db for security reason since it no longer needs to be accessed
+
+    if ($result) {  // checks if a value was fetched
+
+        return false;  // returns false
+
+    } else {  // if other conditions aren't met
+
+        return true;  // returns true
 
     }
-
 }
 
+function reg_user($conn, $post){  // declaring function
 
-function reg_user($conn, $post){//creates function
     if (user_check(dbconnect_select(), $post["username"])) {//checks if user exists
-        try{
-            $sql = "INSERT INTO user(username,password,signupdate,dob,country) VALUES(?,?,?,?,?)";//creates a sql line
-            $stmt = $conn->prepare($sql);// prepares sql statement with connection to database
-            $hpswd = password_hash($post["password"], PASSWORD_DEFAULT);// hashes password using inbuilt php function
-            //forced to use password default as we have no other available  hashing ways in this environment  if this was a production system I would use better ways such as argon2i for better security
-            // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
-            $stmt->bindparam(1, $post["username"]);
-            $stmt->bindparam(2, $hpswd);
-            $stmt->bindparam(3, $post["signupdate"]);
-            $stmt->bindparam(4, $post["dob"]);
-            $stmt->bindparam(5, $post["country"]);
-            $stmt->execute();//executes sql statement
-            $conn = null;// terminates connection to database
 
-            //catches all errors  and throws an error message to screen
-        }catch(PDOException $e){
-            error_log($e->getMessage());// logs error
-            throw new exception($e);
-        } catch(Exception $e){
-            error_log($e->getMessage());// logs error
-            throw new exception($e);
+        $sql = "INSERT INTO user(username,password,signupdate,dob,country) VALUES(?,?,?,?,?)";  // doing a prepared statement by sending values separately, bound separately
+        $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
 
-        }
+        $hpswd = password_hash($post["password"], PASSWORD_DEFAULT);// hashes password using inbuilt php function
+
+        //forced to use password default as we have no other available  hashing ways in this environment  if this was a production system I would use better ways such as argon2i for better security
+
+        // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
+        $stmt->bindparam(1, $post["username"]);
+        $stmt->bindparam(2, $hpswd);
+        $stmt->bindparam(3, $post["signupdate"]);
+        $stmt->bindparam(4, $post["dob"]);
+        $stmt->bindparam(5, $post["country"]);
+        $stmt->execute();//executes sql statement
+
+        $conn = null;  // terminates connection to database
 
     }
 }
 
-function auditor($conn, $patientid,$code,$long){
-    $sql = "INSERT INTO audit(date,patientid,code,longdesc) VALUES(?,?,?,?)";
-    $stmt = $conn->prepare($sql);
-    $date = time();
+function auditor($conn, $patientid,$code,$long){  // declaring function
+
+    $sql = "INSERT INTO audit(date,patientid,code,longdesc) VALUES(?,?,?,?)";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    $date = time();  // sets a value for the sql query
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1, $date);
     $stmt->bindparam(2, $patientid);
     $stmt->bindparam(3, $code);
     $stmt->bindparam(4, $long);
-    $stmt->execute();
-    $conn = null;
-    return true;
+    $stmt->execute();  // executes sql query
+
+    $conn = null;  // terminates connection to database
+    return true;  // returns value
+
 }
 
-function getnewpatientid($conn,$first_name){
-    $sql = "SELECT patientid FROM patient WHERE first_name=?";
-    $stmt = $conn->prepare($sql);
+function getnewpatientid($conn,$first_name){  // declaring function
+
+    $sql = "SELECT patientid FROM patient WHERE first_name=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
     $stmt->bindparam(1, $first_name);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $conn = null;
-    return $result["patientid"];
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn = null;  // terminates connection to database
+    return $result["patientid"];  // returns value
+
 }
 
-function login($conn, $post){
-    try{
-        $sql = "SELECT * FROM patient WHERE first_name=?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindparam(1, $post["first_name"]);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $conn = null;
-        if($result){
-            return $result;
-        }else{
-            $_SESSION["error"] = "user not found";
-            header("Location: login.php");
-            exit;
-        }
-    }catch(PDOException $e){
-        error_log($e->getMessage());// logs error
-        throw new exception($e);
-    } catch(Exception $e){
-        error_log($e->getMessage());// logs error
-        throw new exception($e);
+function login($conn, $post){  // declaring function
+
+    $sql = "SELECT * FROM patient WHERE first_name=?";  // doing a prepared statement by sending values separately, bound separately
+    $stmt = $conn->prepare($sql);  // prepares sql statement with connection to database
+
+    // binding data from form to sql statement parameter making it more secure from a sql injection attack unlikely to hijack my sql statement
+    $stmt->bindparam(1, $post["first_name"]);
+    $stmt->execute();  // executes sql query
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);  // fetches results from sql query
+    $conn = null;    // terminates connection to database
+
+    if($result){  // checks condition is met
+
+        return $result;  // returns value
+
+    }else{  // if other conditions aren't met
+
+        $_SESSION["error"] = "user not found";
+        header("Location: login.php");  // redirects to different page
+        exit;  // stops further execution
+
+    }
+
+}
+
+function user_message(){  // declaring function
+
+    if(isset($_SESSION["usermessage"])){  // checks condition is met
+
+        $message= $_SESSION["usermessage"];  // gets user message from session
+        unset($_SESSION["usermessage"]);  // removes message from session
+        return  $message;  // returns value to calling function
+
+    }else{  // if other conditions aren't met
+
+        $message= "";  // sets value to blank
+        return $message;  // returns value
 
     }
 }
-
-
-function user_message(){
-    if(isset($_SESSION["usermessage"])){
-        $message= $_SESSION["usermessage"];
-        unset($_SESSION["usermessage"]);
-        return  $message;
-
-    }else{
-        $message= "";
-        return $message;
-    }
-}
-
-// starts php
-
 
 function num_check()
 { // declaring function
@@ -488,10 +550,10 @@ function special_check()
         }
 
     } else { // if no other conditions are met
+
         return ""; // return value to calling function
     }
 }
-
 
 function first_special_check()
 { // declaring function
@@ -610,9 +672,9 @@ function strength_check()
         return $strength; // return value to calling function
 
     } else { // if no other conditions are met
+
         return ""; // return value to calling function
+
     }
 }
-
-
 ?>
