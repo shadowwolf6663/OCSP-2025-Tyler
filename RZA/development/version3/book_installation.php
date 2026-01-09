@@ -29,7 +29,7 @@ echo "<html>";  // opening html
                 $_SESSION["usermessage"] = "You must be logged in to access this page!";
                 header("Location: index.php");
                 exit;
-
+                
             } elseif ($_SERVER["REQUEST_METHOD"] === "POST") {// checks request method
 
                     $tmp=$_POST["installation_date"]. ' '.$_POST["installation_time"];
